@@ -1,0 +1,51 @@
+.users {
+  background: #28282b;
+  font-family: "Poppins", sans-serif;
+
+  &__block {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 70px;
+  }
+
+  &__avatar {
+    width: 50px;
+    background: #fff;
+    border-radius: 50%;
+  }
+
+  //   &__remove {
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //   }
+
+  //   &__btn_remove {
+  //     padding: 3px 5px;
+  //     color: #6c757d;
+  //     transition: color 0.3s;
+
+  //     &:hover {
+  //       color: #e03137;
+  //     }
+  //   }
+
+  &__remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__btn_remove {
+    position: absolute;
+    left: 92%;
+    padding: 3px 5px;
+    color: #6c757d;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #e03137;
+    }
+  }
+}

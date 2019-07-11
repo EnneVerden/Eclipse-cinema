@@ -1,0 +1,201 @@
+.profile {
+  background: #28282b;
+  font-family: "Poppins", sans-serif;
+
+  &__block {
+    width: 80%;
+    margin: 0 auto;
+  }
+
+  &__balance {
+    padding: 50px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #bfbdbd;
+    font-size: 30px;
+    letter-spacing: 1px;
+    font-weight: 300;
+  }
+
+  &__arrow {
+    padding: 0 15px;
+    font-size: 18px;
+
+    &__img {
+      color: #bfbdbd;
+    }
+  }
+
+  &__number {
+    margin-left: 10px;
+    margin-right: 3px;
+    color: #d1d1d1;
+    font-weight: 400;
+  }
+
+  &__btn_replenish {
+    padding: 3px 0;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #fff;
+    }
+
+    &_text {
+      margin: 0 3px;
+      font-size: 18px;
+      letter-spacing: 1px;
+    }
+  }
+
+  &__passport {
+    display: flex;
+  }
+
+  &__avatar {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__img {
+    margin-right: 100px;
+    width: 250px;
+    background: #f2f2f2;
+    border-radius: 5px;
+    box-shadow: 5px -5px 5px 1px #181819;
+  }
+
+  &__info {
+    width: 100%;
+  }
+
+  &__form {
+    width: 350px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+
+  &__inp {
+    background: none;
+    font-size: 18px;
+    color: #d1d1d1;
+    letter-spacing: 1px;
+
+    &:focus {
+      color: #d1d1d1;
+      background: none;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__btn {
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+
+  &__btn_save {
+    padding: 7px 40px;
+    background: #5eb75e;
+    transition: opacity 0.3s;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &__btn_remove {
+    background: #798087;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: #e03137;
+    }
+  }
+}
+
+@media all and (max-width: 1024px) {
+  .profile {
+    &__form {
+      width: 80%;
+    }
+
+    &__inp {
+      font-size: 20px;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .profile {
+    &__avatar {
+      justify-content: center;
+    }
+
+    &__img {
+      margin-right: 0;
+    }
+
+    &__form {
+      width: 280px;
+    }
+  }
+}
+
+@media all and (max-width: 420px) {
+  .profile {
+    &__block {
+      width: 90%;
+    }
+
+    &__balance {
+      padding-top: 20px;
+      padding-bottom: 40px;
+    }
+
+    &__balance-title {
+      display: none;
+    }
+
+    &__passport {
+      flex-direction: column;
+    }
+
+    &__form {
+      width: 100%;
+      padding-top: 30px;
+      align-items: center;
+    }
+
+    &__inp {
+      width: 250px;
+      margin: 10px 0;
+    }
+
+    &__btns {
+      flex-direction: column;
+      width: 250px;
+    }
+
+    &__btn {
+      margin: 10px 0;
+    }
+
+    &__btn_save {
+      padding: 7px 0;
+    }
+
+    &__btn_remove {
+      margin-top: 25px;
+      padding: 7px 0;
+    }
+  }
+}

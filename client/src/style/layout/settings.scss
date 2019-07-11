@@ -1,0 +1,10 @@
+.settings {
+  height: 100vh;
+  background: #28282b;
+}
+
+@media all and (max-width: 420px) {
+  .settings {
+    height: auto;
+  }
+}

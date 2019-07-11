@@ -1,0 +1,37 @@
+.header {
+  background: #1d1d1f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 2px solid #e00b5b;
+
+  &__block {
+    width: 90%;
+    padding: 5px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo-link {
+    font-size: 24px;
+    font-family: "Aquatico", sans-serif;
+    color: #d1d1d1;
+    letter-spacing: 7px;
+
+    &:hover {
+      color: #d1d1d1;
+      text-decoration: none;
+    }
+  }
+
+  &__logo-img {
+    width: 50px;
+    margin-right: 10px;
+  }
+}

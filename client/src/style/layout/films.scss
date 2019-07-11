@@ -1,0 +1,22 @@
+.films {
+  background: #28282b;
+  font-family: "Poppins", sans-serif;
+
+  &__block {
+    width: 90%;
+    margin: 0 auto;
+    padding-top: 70px;
+  }
+
+  &__poster {
+    width: 100px;
+  }
+
+  &__price {
+    font-size: 30px;
+  }
+
+  &__btn_remove {
+    padding: 3px 7px;
+  }
+}
