@@ -5,7 +5,7 @@
     position: relative;
     width: 40px;
     height: 40px;
-    background: #171719;
+    background: #1f1f23;
     border-radius: 50%;
 
     &:focus {
@@ -67,10 +67,10 @@
     top: 0;
     width: 70%;
     height: 100vh;
-    background: #1d1d1f;
+    background: #26262b;
     color: #d1d1d1;
     z-index: 100;
-    font-family: "Poppins", sans-serif;
+    font-family: "Gilroy", sans-serif;
     transform: translateX(-100%);
     transition: transform 0.5s;
   }
@@ -109,12 +109,10 @@
     letter-spacing: 1px;
     padding: 10px 0;
     border-bottom: 1px solid #37373b;
-    transition: background-color 0.3s;
 
     &:hover {
       color: #d1d1d1;
       text-decoration: none;
-      background-color: #28282b;
     }
 
     &:first-child {

@@ -1,0 +1,184 @@
+.films-grid {
+  background: #2f2f35;
+  font-family: "Gilroy", sans-serif;
+
+  &__grid {
+    width: 1200px;
+    margin: 0 auto;
+    padding-top: 20px;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__film {
+    width: 48%;
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__img-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+  }
+
+  &__img {
+    width: 100%;
+  }
+
+  &__info-block {
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    flex: 2;
+  }
+
+  &__title {
+    color: #fff;
+    font-size: 24px;
+    letter-spacing: 1px;
+  }
+
+  &__categories {
+    color: #da5275;
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+  }
+
+  &__divide-block {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__description {
+    margin-top: 20px;
+    color: #d1d1d1;
+  }
+
+  &__action-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__price {
+    color: #de5059;
+    font-size: 44px;
+    letter-spacing: 3px;
+  }
+
+  &__date {
+    color: #d1d1d1;
+    letter-spacing: 1px;
+  }
+
+  &__btn {
+    padding: 10px 35px;
+    background: linear-gradient(to right, #d6538e, #de5059);
+  }
+}
+
+.films-grid__btn_purchased {
+  background: #2ecc71;
+  box-shadow: 0 0 3px 2px #28282b;
+}
+
+@media all and (max-width: 1024px) {
+  .films-grid {
+    &__grid {
+      width: 90%;
+    }
+
+    &__film {
+      width: 30%;
+      flex-direction: column;
+    }
+
+    &__info-block {
+      padding-top: 10px;
+      padding-left: 0;
+    }
+
+    &__price {
+      font-size: 36px;
+    }
+
+    &__date {
+      font-size: 14px;
+    }
+
+    &__btn {
+      padding: 7px 20px;
+    }
+  }
+}
+
+@media all and (max-width: 850px) {
+  .films-grid {
+    &__grid {
+      width: 90%;
+    }
+
+    &__film {
+      width: 100%;
+      flex-direction: row;
+    }
+
+    &__info-block {
+      padding: 0;
+      padding-left: 15px;
+    }
+
+    &__price {
+      font-size: 44px;
+    }
+
+    &__date {
+      font-size: 16px;
+    }
+
+    &__btn {
+      padding: 10px 35px;
+    }
+  }
+}
+
+@media all and (max-width: 420px) {
+  .films-grid {
+    &__grid {
+      width: 90%;
+    }
+
+    &__film {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    &__info-block {
+      padding: 0;
+      padding-top: 10px;
+    }
+
+    &__price {
+      font-size: 36px;
+    }
+
+    &__date {
+      font-size: 14px;
+    }
+
+    &__btn {
+      padding: 7px 25px;
+    }
+  }
+}

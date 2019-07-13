@@ -1,6 +1,6 @@
 .users {
   background: #28282b;
-  font-family: "Poppins", sans-serif;
+  font-family: "Gilroy", sans-serif;
 
   &__block {
     width: 90%;
@@ -13,22 +13,6 @@
     background: #fff;
     border-radius: 50%;
   }
-
-  //   &__remove {
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //   }
-
-  //   &__btn_remove {
-  //     padding: 3px 5px;
-  //     color: #6c757d;
-  //     transition: color 0.3s;
-
-  //     &:hover {
-  //       color: #e03137;
-  //     }
-  //   }
 
   &__remove {
     display: flex;

@@ -1,11 +1,11 @@
 .pagination {
-  background: #28282b;
-  font-family: "Poppins", sans-serif;
+  background: #2f2f35;
+  font-family: "Gilroy", sans-serif;
   padding: 40px 0;
 
   &__block {
-    background: #28282b;
-    width: 90%;
+    background: #2f2f35;
+    width: 1200px;
     margin: 0 auto;
     padding: 7px 0;
     display: flex;
@@ -36,19 +36,26 @@
 }
 
 .page_active {
-  color: #e00b5b;
+  color: #da5275;
   background-color: #37363b;
 
   &:hover {
-    color: #e00b5b;
+    color: #da5275;
   }
 }
 
 @media all and (max-width: 1024px) {
   .pagination {
-    &__link {
-      width: 40px;
-      font-size: 30px;
+    &__block {
+      width: 90%;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .pagination {
+    &__block {
+      width: 90%;
     }
   }
 }
@@ -56,13 +63,20 @@
 @media all and (max-width: 420px) {
   .pagination {
     &__block {
-      width: 72%;
+      width: 90%;
     }
 
     &__link {
-      margin: 0 4px;
-      font-size: 18px;
-      border-radius: 0;
+      width: auto;
+      font-size: 20px;
+
+      &:hover {
+        background: none;
+      }
     }
+  }
+
+  .page_active {
+    background: none;
   }
 }

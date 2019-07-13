@@ -1,10 +1,13 @@
 .info {
-  background: #28282b;
-  font-family: "Poppins", sans-serif;
+  background: #26262b;
+  font-family: "Gilroy", sans-serif;
+  position: relative;
+  box-shadow: 0 3px 10px 1px #211f21;
 
   &__block {
-    width: 90%;
+    width: 1200px;
     padding-top: 50px;
+    padding-bottom: 10px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
@@ -12,8 +15,8 @@
   }
 
   &__title {
+    text-transform: uppercase;
     color: #d1d1d1;
-    letter-spacing: 3px;
   }
 
   &__filter {
@@ -37,24 +40,30 @@
     border-bottom: 2px solid #37373b;
     padding: 7px 25px;
     color: #d1d1d1;
+    letter-spacing: 1px;
     outline: none;
     transition: border-color 0.3s;
 
     &:focus {
       color: #d1d1d1;
-      border-color: #e00b5b;
+      border-color: #da5275;
+      letter-spacing: 1px;
     }
   }
 }
 
 @media all and (max-width: 1024px) {
   .info {
-    &__search {
-      top: 16px;
+    &__block {
+      width: 90%;
     }
+  }
+}
 
-    &__input {
-      font-size: 24px;
+@media all and (max-width: 768px) {
+  .info {
+    &__block {
+      width: 90%;
     }
   }
 }
@@ -62,28 +71,22 @@
 @media all and (max-width: 420px) {
   .info {
     &__block {
-      padding-top: 20px;
+      width: 90%;
       flex-direction: column;
-      align-items: center;
-    }
-
-    &__title {
-      font-weight: 300;
-    }
-
-    &__search {
-      display: none;
-      top: 11px;
+      justify-content: center;
+      padding-top: 25px;
     }
 
     &__filter {
-      width: 80%;
-      padding-top: 25px;
+      width: 100%;
     }
 
     &__input {
       text-align: center;
-      font-size: 16px;
+    }
+
+    &__search {
+      display: none;
     }
   }
 }

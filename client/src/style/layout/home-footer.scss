@@ -1,9 +1,10 @@
 .footer {
-  background: #1d1d1f;
-  font-family: "Poppins", sans-serif;
+  background: #272428;
+  font-family: "Gilroy", sans-serif;
+  box-shadow: 0 -1px 10px 0 #211f21;
 
   &__block {
-    width: 90%;
+    width: 1200px;
     margin: 0 auto;
     padding: 40px 0 20px 0;
     display: flex;
@@ -24,7 +25,7 @@
     transition: opacity 0.3s;
 
     &:hover {
-      color: #c2577d;
+      color: #da5275;
       text-decoration: none;
       opacity: 0.7;
     }
@@ -38,10 +39,26 @@
   }
 }
 
+@media all and (max-width: 1024px) {
+  .footer {
+    &__block {
+      width: 90%;
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .footer {
+    &__block {
+      width: 90%;
+    }
+  }
+}
+
 @media all and (max-width: 420px) {
   .footer {
-    &__name {
-      font-size: 16px;
+    &__block {
+      width: 90%;
     }
   }
 }
