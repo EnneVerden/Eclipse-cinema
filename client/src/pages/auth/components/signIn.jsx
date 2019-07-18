@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SignIn extends React.PureComponent {
   state = {
@@ -15,6 +16,9 @@ class SignIn extends React.PureComponent {
   };
 
   render() {
+    const { email, password } = this.state;
+    const { authorization } = this.props;
+
     return (
       <form
         action="#"
@@ -41,12 +45,20 @@ class SignIn extends React.PureComponent {
           placeholder="Password"
           required
         />
-        <button type="submit" className="button auth__forms__btn btn">
+        <button
+          type="submit"
+          className="button auth__forms__btn btn"
+          onClick={() => authorization(email, password)}
+        >
           Sign in
         </button>
       </form>
     );
   }
 }
+
+SignIn.propTypes = {
+  authorization: PropTypes.func.isRequired,
+};
 
 export default SignIn;

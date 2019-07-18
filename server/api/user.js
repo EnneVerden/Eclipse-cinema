@@ -6,10 +6,10 @@ const { User } = require("../models/userModel");
 
 router.get("/user", async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email: req.query.email });
 
     if (!user) res.send(false);
-    if (!bcrypt.compareSync(req.body.password, user.password)) {
+    if (!bcrypt.compareSync(req.query.password, user.password)) {
       res.send(false);
     }
 

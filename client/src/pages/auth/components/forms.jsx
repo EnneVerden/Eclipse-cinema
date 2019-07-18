@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SignIn from './signIn';
+import SignIn from '../../../containers/signIn';
 import SignUp from './signUp';
 
 const Forms = () => (
