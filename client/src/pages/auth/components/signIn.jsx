@@ -17,7 +17,7 @@ class SignIn extends React.PureComponent {
 
   render() {
     const { email, password } = this.state;
-    const { authorization } = this.props;
+    const { authorization, errorText } = this.props;
 
     return (
       <form
@@ -45,6 +45,7 @@ class SignIn extends React.PureComponent {
           placeholder="Password"
           required
         />
+        <p className="warning">{errorText}</p>
         <button
           type="submit"
           className="button auth__forms__btn btn"
@@ -59,6 +60,7 @@ class SignIn extends React.PureComponent {
 
 SignIn.propTypes = {
   authorization: PropTypes.func.isRequired,
+  errorText: PropTypes.string.isRequired,
 };
 
 export default SignIn;

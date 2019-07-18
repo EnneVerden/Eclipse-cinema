@@ -21,7 +21,7 @@ class SignUp extends React.PureComponent {
     const {
       email, fullName, password, confirmPass,
     } = this.state;
-    const { registration } = this.props;
+    const { registration, errorText } = this.props;
 
     return (
       <form
@@ -65,6 +65,7 @@ class SignUp extends React.PureComponent {
           placeholder="Confirm password"
           required
         />
+        <p className="warning">{errorText}</p>
         <button
           type="submit"
           className="button auth__forms__btn btn"

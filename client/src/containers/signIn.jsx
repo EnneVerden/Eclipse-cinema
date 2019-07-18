@@ -18,19 +18,25 @@ class SignInContainer extends Component {
   };
 
   render() {
-    return <SignIn authorization={this.authorization} />;
+    const { errorText } = this.props;
+    return <SignIn authorization={this.authorization} errorText={errorText} />;
   }
 }
 
 SignInContainer.propTypes = {
   getUserData: PropTypes.func.isRequired,
+  errorText: PropTypes.string.isRequired,
 };
+
+const mapStateToProps = state => ({
+  errorText: state.authError.error,
+});
 
 const mapDispatchToProps = dispatch => ({
   getUserData: url => dispatch(fetchUserData(url)),
 });
 
 export default connect(
-  undefined,
+  mapStateToProps,
   mapDispatchToProps,
 )(SignInContainer);
