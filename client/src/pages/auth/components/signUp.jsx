@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class SignUp extends React.PureComponent {
   state = {
@@ -17,12 +18,17 @@ class SignUp extends React.PureComponent {
   };
 
   render() {
+    const {
+      email, fullName, password, confirmPass,
+    } = this.state;
+    const { registration } = this.props;
+
     return (
       <form
         action="#"
         className="auth__forms__form tab-pane fade"
         id="sign-up"
-        aria-labelledby="signup-tab"
+        aria-labelledby="signUp-tab"
         onSubmit={(event) => {
           event.preventDefault();
         }}
@@ -59,12 +65,20 @@ class SignUp extends React.PureComponent {
           placeholder="Confirm password"
           required
         />
-        <button type="submit" className="button auth__forms__btn btn">
+        <button
+          type="submit"
+          className="button auth__forms__btn btn"
+          onClick={() => registration(email, fullName, password, confirmPass)}
+        >
           Create
         </button>
       </form>
     );
   }
 }
+
+SignUp.propTypes = {
+  registration: PropTypes.func.isRequired,
+};
 
 export default SignUp;

@@ -1,4 +1,4 @@
-import FETCH_USER_DATA_SUCCESS from '../actionTypes';
+import { FETCH_USER_DATA_SUCCESS } from '../actionTypes';
 
 export const fetchUserDataSuccess = user => ({
   type: FETCH_USER_DATA_SUCCESS,

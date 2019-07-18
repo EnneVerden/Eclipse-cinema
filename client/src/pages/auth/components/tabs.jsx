@@ -5,7 +5,7 @@ const Tabs = () => (
     <li className="auth__tabs__tab">
       <a
         href="#sign-in"
-        id="signin-tab"
+        id="signIn-tab"
         data-toggle="tab"
         role="tab"
         aria-controls="sign-in"
@@ -18,7 +18,7 @@ const Tabs = () => (
     <li className="auth__tabs__tab">
       <a
         href="#sign-up"
-        id="signup-tab"
+        id="signUp-tab"
         data-toggle="tab"
         role="tab"
         aria-controls="sign-up"
