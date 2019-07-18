@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Auth from '../auth/auth';
-import Home from '../home/home';
-import Settings from '../settings/settings';
+import Auth from '../auth/Auth';
+import Home from '../home/Home';
+import Settings from '../settings/Settings';
 
 const App = () => (
   <Router>

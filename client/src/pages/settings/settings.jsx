@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from '../../shared/header/header';
+import Header from '../../shared/header/Header';
 import Menu from './components/menu';
 import Profile from './components/profile';
 import Films from './components/films';

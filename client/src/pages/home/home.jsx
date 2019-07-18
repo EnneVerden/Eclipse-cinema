@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Header from '../../shared/header/header';
+import Header from '../../shared/header/Header';
 import Info from './components/info';
 import FilmsGrid from './components/filmsGrid';
 import Pagination from './components/pagination';
