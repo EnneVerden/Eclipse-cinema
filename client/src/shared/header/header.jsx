@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Logo from './components/logo';
-import Dropdown from './components/dropdown';
-import SideMenu from './components/sideMenu';
+import Dropdown from '../../containers/dropdown';
+import SideMenu from '../../containers/sideMenu';
 
 const Header = () => (
   <header className="header">

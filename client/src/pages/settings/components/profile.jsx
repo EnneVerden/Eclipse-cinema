@@ -33,7 +33,6 @@ const Profile = () => (
               type="text"
               className="form-control profile__inp"
               placeholder="Full name"
-              value="Adamovich Pavel"
             />
             <input
               type="password"

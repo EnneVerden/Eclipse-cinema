@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Logo = () => (
   <div className="header__logo">
-    <a href="/home" className="header__logo-link">
+    <Link to="/home" className="header__logo-link">
       <span>Eclipse</span>
-    </a>
+    </Link>
   </div>
 );
 
