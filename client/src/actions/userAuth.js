@@ -10,6 +10,7 @@ export const fetchUserData = url => async (dispatch) => {
   try {
     const response = await fetch(url);
     const user = await response.json();
+
     if (user !== false) {
       dispatch(fetchUserDataSuccess(user));
     } else {

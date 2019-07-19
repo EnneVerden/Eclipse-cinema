@@ -2,7 +2,7 @@ import React from 'react';
 
 import Header from '../../shared/header/Header';
 import Info from './components/info';
-import FilmsGrid from './components/filmsGrid';
+import FilmsGrid from '../../containers/filmsGrid';
 import Pagination from './components/pagination';
 import Footer from './components/footer';
 

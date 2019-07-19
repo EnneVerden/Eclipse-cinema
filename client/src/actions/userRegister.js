@@ -14,6 +14,7 @@ export const sendUserData = (url, body) => async (dispatch) => {
       body: JSON.stringify(body),
     });
     const user = await response.json();
+
     if (user !== false) {
       dispatch(sendUserDataSuccess(user));
     } else {
