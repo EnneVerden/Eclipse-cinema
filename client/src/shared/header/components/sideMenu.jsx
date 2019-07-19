@@ -12,7 +12,9 @@ const showMenu = (event) => {
     .classList.toggle('side-menu__btn_active');
 };
 
-const SideMenu = ({ avatar, fullName, balance }) => (
+const SideMenu = ({
+  avatar, fullName, balance, logout,
+}) => (
   <div className="side-menu">
     <button type="button" className="btn side-menu__btn" onClick={showMenu}>
       <span className="side-menu__btn__icon" />
@@ -31,7 +33,7 @@ const SideMenu = ({ avatar, fullName, balance }) => (
           <i className="fas fa-cog side-menu__icon" />
           <span>Settings</span>
         </Link>
-        <Link to="/" className="side-menu__link">
+        <Link to="/" className="side-menu__link" onClick={logout}>
           <i className="fas fa-sign-out-alt side-menu__icon" />
           <span>Logout</span>
         </Link>
@@ -44,6 +46,7 @@ SideMenu.propTypes = {
   avatar: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default SideMenu;

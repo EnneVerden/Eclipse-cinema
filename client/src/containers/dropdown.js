@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import Dropdown from '../shared/header/components/dropdown';
+import userLogout from '../actions/userLogout';
 
 const mapStateToProps = state => ({
   avatar: state.userData.avatar,
@@ -8,4 +9,11 @@ const mapStateToProps = state => ({
   balance: state.userData.balance,
 });
 
-export default connect(mapStateToProps)(Dropdown);
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(userLogout()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Dropdown);

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-const Links = ({ balance }) => (
+const Links = ({ balance, logout }) => (
   <nav>
     <Link to="/settings" className="dropdown-item dropdown__link">
       <i className="fas fa-wallet dropdown__icon" />
@@ -12,7 +12,7 @@ const Links = ({ balance }) => (
       <i className="fas fa-cog dropdown__icon dropdown__icon_animate" />
       <span>Settings</span>
     </Link>
-    <Link to="/" className="dropdown-item dropdown__link">
+    <Link to="/" className="dropdown-item dropdown__link" onClick={logout}>
       <i className="fas fa-sign-out-alt dropdown__icon dropdown__icon_animate" />
       <span>Logout</span>
     </Link>
@@ -21,6 +21,7 @@ const Links = ({ balance }) => (
 
 Links.propTypes = {
   balance: PropTypes.number.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default Links;

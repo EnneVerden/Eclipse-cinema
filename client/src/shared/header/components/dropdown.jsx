@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Links from './links';
 
-const Dropdown = ({ avatar, fullName, balance }) => (
+const Dropdown = ({ avatar, fullName, balance, logout }) => (
   <div className="dropdown__block">
     <div className="dropdown">
       <button
@@ -21,7 +21,7 @@ const Dropdown = ({ avatar, fullName, balance }) => (
         className="dropdown-menu dropdown__menu"
         aria-labelledby="dropdown-menu-button"
       >
-        <Links balance={balance} />
+        <Links balance={balance} logout={logout} />
       </div>
     </div>
   </div>
@@ -31,6 +31,7 @@ Dropdown.propTypes = {
   avatar: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 export default Dropdown;
