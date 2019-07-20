@@ -17,7 +17,7 @@ class Profile extends Component {
   };
 
   render() {
-    const { avatar, balance } = this.props;
+    const { avatar, balance, changeUserName } = this.props;
     const { fullName } = this.state;
 
     return (
@@ -44,7 +44,13 @@ class Profile extends Component {
               <img src={avatar} alt="Avatar" className="profile__img" />
             </div>
             <div className="profile__info">
-              <form action="#" className="profile__form">
+              <form
+                action="#"
+                className="profile__form"
+                onSubmit={(event) => {
+                  event.preventDefault();
+                }}
+              >
                 <input
                   type="text"
                   className="form-control profile__inp"
@@ -71,6 +77,7 @@ class Profile extends Component {
                   <button
                     type="button"
                     className="btn profile__btn profile__btn_save"
+                    onClick={() => changeUserName(fullName)}
                   >
                     Save
                   </button>
@@ -94,6 +101,7 @@ Profile.propTypes = {
   avatar: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
+  changeUserName: PropTypes.func.isRequired,
 };
 
 export default Profile;
