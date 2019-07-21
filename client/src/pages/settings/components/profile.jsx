@@ -5,7 +5,7 @@ class Profile extends Component {
   state = {
     fullName: this.props.fullName,
     newPassword: '',
-    oldPassword: '',
+    currentPassword: '',
   };
 
   handleChange = (event) => {
@@ -17,8 +17,8 @@ class Profile extends Component {
   };
 
   render() {
-    const { avatar, balance, changeUserName } = this.props;
-    const { fullName } = this.state;
+    const { avatar, balance, changeUserData } = this.props;
+    const { fullName, newPassword } = this.state;
 
     return (
       <section
@@ -70,14 +70,14 @@ class Profile extends Component {
                   type="password"
                   className="form-control profile__inp"
                   name="oldPassword"
-                  placeholder="Old password"
+                  placeholder="Current password"
                   onChange={this.handleChange}
                 />
                 <div className="profile__btns">
                   <button
                     type="button"
                     className="btn profile__btn profile__btn_save"
-                    onClick={() => changeUserName(fullName)}
+                    onClick={() => changeUserData(fullName, newPassword)}
                   >
                     Save
                   </button>
@@ -101,7 +101,7 @@ Profile.propTypes = {
   avatar: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
-  changeUserName: PropTypes.func.isRequired,
+  changeUserData: PropTypes.func.isRequired,
 };
 
 export default Profile;

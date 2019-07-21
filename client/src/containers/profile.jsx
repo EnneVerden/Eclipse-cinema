@@ -3,13 +3,21 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Profile from '../pages/settings/components/profile';
-import { changeUserName } from '../actions/userNameChange';
+import { changeUserData } from '../actions/userDataChange';
 
 class ProfileContainer extends Component {
-  changeUserName = (newName) => {
-    const { _id, changeName } = this.props;
+  changeUserData = (newName, newPassword) => {
+    const { _id, changeData } = this.props;
+    let newData = {};
 
-    changeName(`/api/user/${_id}`, { fullName: newName });
+    if (newName === '' || newPassword === '') return;
+    if (newName !== '') newData = { fullName: newName };
+    if (newPassword !== '') newData = { password: newPassword };
+    if (newName !== '' && newPassword !== '') {
+      newData = { fullName: newName, password: newPassword };
+    }
+
+    changeData(`/api/user/${_id}`, newData);
   };
 
   render() {
@@ -17,7 +25,7 @@ class ProfileContainer extends Component {
 
     return (
       <Profile
-        changeUserName={this.changeUserName}
+        changeUserData={this.changeUserData}
         avatar={avatar}
         fullName={fullName}
         balance={balance}
@@ -31,7 +39,7 @@ ProfileContainer.propTypes = {
   avatar: PropTypes.string.isRequired,
   fullName: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
-  changeName: PropTypes.func.isRequired,
+  changeData: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -42,7 +50,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeName: (url, body) => dispatch(changeUserName(url, body)),
+  changeData: (url, body) => dispatch(changeUserData(url, body)),
 });
 
 export default connect(

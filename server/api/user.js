@@ -44,8 +44,14 @@ router.post("/user", async (req, res) => {
 
 router.put("/user/:id", async (req, res) => {
   try {
-    await User.findByIdAndUpdate({ _id: req.params.id }, req.body);
-    res.send(req.body);
+    if (req.body.password) {
+      req.body.password = bcrypt.hashSync(req.body.password, 10);
+    }
+
+    await User.updateOne({ _id: req.params.id }, req.body);
+    const user = await User.findById({ _id: req.params.id });
+
+    res.send({ fullName: user.fullName, password: user.password });
   } catch (error) {
     console.log("Error: " + error);
     res.send(false);

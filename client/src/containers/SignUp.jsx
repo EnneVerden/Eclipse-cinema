@@ -8,11 +8,11 @@ import throwAuthError from '../actions/authError';
 
 class SignUpContainer extends Component {
   registration = (email, fullName, password, confirmPass) => {
-    const { postUserData, throwAuthError } = this.props;
+    const { postUserData, throwAuthErr } = this.props;
 
     if (!email || !fullName || !password || !confirmPass) return;
     if (password !== confirmPass) {
-      throwAuthError('Wrong combination password and confirm password');
+      throwAuthErr('Wrong combination password and confirm password');
       return;
     }
 
@@ -32,7 +32,7 @@ class SignUpContainer extends Component {
 
 SignUpContainer.propTypes = {
   postUserData: PropTypes.func.isRequired,
-  throwAuthError: PropTypes.func.isRequired,
+  throwAuthErr: PropTypes.func.isRequired,
   errorText: PropTypes.string.isRequired,
 };
 
@@ -42,7 +42,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   postUserData: (url, body) => dispatch(sendUserData(url, body)),
-  throwAuthError: errorText => dispatch(throwAuthError(errorText)),
+  throwAuthErr: errorText => dispatch(throwAuthError(errorText)),
 });
 
 export default connect(

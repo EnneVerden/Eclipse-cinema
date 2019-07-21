@@ -80,6 +80,11 @@ class SignUp extends React.PureComponent {
 
 SignUp.propTypes = {
   registration: PropTypes.func.isRequired,
+  errorText: PropTypes.string,
+};
+
+SignUp.defaultProps = {
+  errorText: '',
 };
 
 export default SignUp;
