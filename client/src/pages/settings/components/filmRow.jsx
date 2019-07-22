@@ -1,23 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const FilmRow = () => (
+const FilmRow = ({
+  name,
+  poster,
+  description,
+  tags,
+  startDate,
+  endDate,
+  ticketPrice,
+}) => (
   <tr>
-    <td className="films__col">Mortal engines</td>
+    <td className="films__col">{name}</td>
     <td className="films__col">
-      <img
-        src="https://m.media-amazon.com/images/M/MV5BNzY1MDA2OTQ0N15BMl5BanBnXkFtZTgwMTkzNjU2NTM@._V1_SY1000_CR0,0,631,1000_AL_.jpg"
-        alt="Poster"
-        className="films__poster"
-      />
+      <img src={poster} alt="Poster" className="films__poster" />
     </td>
-    <td className="films__col">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum, magni
-      quisquam corrupti.
-    </td>
-    <td className="films__col">Action, Fantasy, Comedy</td>
-    <td className="films__col">12.07.19</td>
-    <td className="films__col">17.07.19</td>
-    <td className="films__col films__price">5$</td>
+    <td className="films__col">{description}</td>
+    <td className="films__col">{tags}</td>
+    <td className="films__col">{startDate}</td>
+    <td className="films__col">{endDate}</td>
+    <td className="films__col films__price">{ticketPrice}</td>
     <td className="films__col films__btns">
       <button type="button" className="btn films__btn_remove" title="Remove">
         <i className="far fa-trash-alt" />
@@ -25,5 +27,15 @@ const FilmRow = () => (
     </td>
   </tr>
 );
+
+FilmRow.propTypes = {
+  name: PropTypes.string.isRequired,
+  poster: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  tags: PropTypes.string.isRequired,
+  startDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string.isRequired,
+  ticketPrice: PropTypes.number.isRequired,
+};
 
 export default FilmRow;

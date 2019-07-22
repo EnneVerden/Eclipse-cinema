@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Header from '../../shared/header/Header';
 import Menu from '../../containers/menu';
 import Profile from '../../containers/profile';
-import Films from './components/films';
+import Films from '../../containers/filmsTable';
 import Users from './components/users';
 
 import ProtectedComponent from '../../shared/protectComponent/ProtectedComp';
