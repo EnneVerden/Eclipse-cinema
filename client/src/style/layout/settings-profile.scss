@@ -114,12 +114,17 @@
 
   &__btn_remove {
     background: #798087;
+    font-size: 14px;
     transition: background-color 0.3s;
 
     &:hover {
       background-color: #e03137;
     }
   }
+}
+
+.activated-remove {
+  background-color: #e03137;
 }
 
 @media all and (max-width: 1024px) {
@@ -144,8 +149,16 @@
       margin-right: 0;
     }
 
+    &__info {
+      margin-left: 20px;
+    }
+
     &__form {
       width: 280px;
+    }
+
+    &__btn_save {
+      padding: 7px 20px;
     }
   }
 }

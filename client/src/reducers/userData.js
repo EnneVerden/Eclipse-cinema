@@ -2,6 +2,7 @@ import {
   FETCH_USER_DATA_SUCCESS,
   SEND_USER_DATA_SUCCESS,
   CHANGE_USER_DATA_SUCCESS,
+  SEND_REMOVE_REQUEST_SUCCESS,
   USER_IS_LOGGED_OUT,
 } from '../actionTypes';
 
@@ -19,6 +20,8 @@ const userData = (state = initialState, action) => {
         fullName: action.newUserData.fullName,
         password: action.newUserData.password,
       };
+    case SEND_REMOVE_REQUEST_SUCCESS:
+      return { ...state, removeRequest: action.newUserData.removeRequest };
     case USER_IS_LOGGED_OUT:
       return initialState;
     default:

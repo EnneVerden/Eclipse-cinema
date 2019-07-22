@@ -51,7 +51,11 @@ router.put("/user/:id", async (req, res) => {
     await User.updateOne({ _id: req.params.id }, req.body);
     const user = await User.findById({ _id: req.params.id });
 
-    res.send({ fullName: user.fullName, password: user.password });
+    res.send({
+      fullName: user.fullName,
+      password: user.password,
+      removeRequest: user.removeRequest
+    });
   } catch (error) {
     console.log("Error: " + error);
     res.send(false);

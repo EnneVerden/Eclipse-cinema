@@ -17,7 +17,9 @@ class Profile extends Component {
   };
 
   render() {
-    const { avatar, balance, changeUserData } = this.props;
+    const {
+      avatar, balance, changeUserData, removeAccount,
+    } = this.props;
     const { fullName, newPassword } = this.state;
 
     return (
@@ -79,8 +81,9 @@ class Profile extends Component {
                   <button
                     type="button"
                     className="btn profile__btn profile__btn_remove"
+                    onClick={removeAccount}
                   >
-                    Remove
+                    Remove account
                   </button>
                 </div>
               </form>
@@ -97,6 +100,7 @@ Profile.propTypes = {
   fullName: PropTypes.string.isRequired,
   balance: PropTypes.number.isRequired,
   changeUserData: PropTypes.func.isRequired,
+  removeAccount: PropTypes.func.isRequired,
 };
 
 export default Profile;
