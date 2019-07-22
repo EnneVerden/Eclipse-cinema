@@ -37,7 +37,7 @@ class ProfileContainer extends Component {
     const { _id, changeData } = this.props;
     let newData = {};
 
-    if (newName === '' || newPassword === '') return;
+    if (newName === '' && newPassword === '') return;
     if (newName !== '') newData = { fullName: newName };
     if (newPassword !== '') newData = { password: newPassword };
     if (newName !== '' && newPassword !== '') {

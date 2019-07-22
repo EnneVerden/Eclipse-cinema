@@ -49,13 +49,12 @@ router.put("/user/:id", async (req, res) => {
     }
 
     await User.updateOne({ _id: req.params.id }, req.body);
-    const user = await User.findById({ _id: req.params.id });
+    const user = await User.findById(
+      { _id: req.params.id },
+      { fullName: 1, password: 1, removeRequest: 1 }
+    );
 
-    res.send({
-      fullName: user.fullName,
-      password: user.password,
-      removeRequest: user.removeRequest
-    });
+    res.send(user);
   } catch (error) {
     console.log("Error: " + error);
     res.send(false);

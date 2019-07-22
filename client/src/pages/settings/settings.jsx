@@ -5,7 +5,7 @@ import Header from '../../shared/header/Header';
 import Menu from '../../containers/menu';
 import Profile from '../../containers/profile';
 import Films from '../../containers/filmsTable';
-import Users from './components/users';
+import Users from '../../containers/usersTable';
 
 import ProtectedComponent from '../../shared/protectComponent/ProtectedComp';
 
