@@ -1,51 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Menu = () => (
+import MenuItem from './menu-item';
+import ProtectedComponent from '../../../shared/protectComponent/ProtectedComp';
+
+const Menu = ({ status }) => (
   <section className="menu">
     <div className="menu__block">
-      <ul className="menu__list nav" role="tablist">
-        <li className="menu__item">
-          <a
-            href="#profile"
-            className="menu__link"
-            id="profile-tab"
-            data-toggle="tab"
-            role="tab"
-            aria-controls="profile"
-            aria-selected="true"
-          >
-            Profile
-          </a>
-        </li>
-        <li className="menu__item">
-          <a
-            href="#films"
-            className="menu__link"
-            id="films-tab"
-            data-toggle="tab"
-            role="tab"
-            aria-controls="films"
-            aria-selected="true"
-          >
-            Films
-          </a>
-        </li>
-        <li className="menu__item">
-          <a
-            href="#users"
-            className="menu__link"
-            id="users-tab"
-            data-toggle="tab"
-            role="tab"
-            aria-controls="users"
-            aria-selected="true"
-          >
-            Users
-          </a>
-        </li>
-      </ul>
+      <nav className="menu__list nav">
+        <MenuItem anchor="#profile" itemName="Profile" />
+        <ProtectedComponent
+          protectField={status}
+          component={MenuItem}
+          anchor="#films"
+          itemName="Films"
+        />
+        <ProtectedComponent
+          protectField={status}
+          component={MenuItem}
+          anchor="#users"
+          itemName="Users"
+        />
+      </nav>
     </div>
   </section>
 );
+
+Menu.propTypes = {
+  status: PropTypes.string.isRequired,
+};
 
 export default Menu;

@@ -3,12 +3,7 @@ import React from 'react';
 import UserRow from './userRow';
 
 const Users = () => (
-  <section
-    className="users tab-pane fade"
-    id="users"
-    role="tabpanel"
-    aria-labelledby="users-tab"
-  >
+  <section className="users tab-pane fade" id="users">
     <div className="users__block">
       <table className="table">
         <thead className="users__thead">

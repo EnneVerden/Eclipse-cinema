@@ -3,12 +3,7 @@ import React from 'react';
 import FilmRow from './filmRow';
 
 const Films = () => (
-  <section
-    className="films tab-pane fade"
-    id="films"
-    role="tabpanel"
-    aria-labelledby="films-tab"
-  >
+  <section className="films tab-pane fade" id="films">
     <div className="films__block">
       <table className="table">
         <thead className="films__thead">

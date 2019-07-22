@@ -15,8 +15,16 @@
   }
 
   &__item {
-    transition: border-color 0.3s;
+    color: #d1d1d1;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 3px;
     position: relative;
+
+    &:hover {
+      color: #d1d1d1;
+      text-decoration: none;
+    }
 
     &::before {
       content: "";
@@ -31,18 +39,6 @@
 
     &:hover::before {
       transform: scale(1, 1);
-    }
-  }
-
-  &__link {
-    color: #d1d1d1;
-    font-size: 30px;
-    font-weight: 300;
-    letter-spacing: 3px;
-
-    &:hover {
-      color: #d1d1d1;
-      text-decoration: none;
     }
   }
 }
@@ -60,6 +56,7 @@
         left: 0;
         transform: none;
         border: 1px solid #454449;
+        transition: none;
       }
 
       &:nth-child(2),

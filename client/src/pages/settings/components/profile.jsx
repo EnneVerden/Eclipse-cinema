@@ -21,12 +21,7 @@ class Profile extends Component {
     const { fullName, newPassword } = this.state;
 
     return (
-      <section
-        className="profile tab-pane fade show active"
-        id="profile"
-        role="tabpanel"
-        aria-labelledby="profile-tab"
-      >
+      <section className="profile tab-pane fade show active" id="profile">
         <div className="profile__block">
           <div className="profile__balance">
             <span className="profile__balance-title">Balance:</span>

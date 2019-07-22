@@ -4,8 +4,8 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import Auth from '../auth/Auth';
 import Home from '../home/Home';
-import Settings from '../settings/Settings';
-import ProtectedRoute from './ProtectedRoute';
+import Settings from '../../containers/settings';
+import ProtectedRoute from '../../shared/protectComponent/ProtectedRoute';
 
 const App = ({ email }) => (
   <Router>

@@ -24,7 +24,6 @@ class SignIn extends React.PureComponent {
         action="#"
         className="auth__forms__form tab-pane fade show active"
         id="sign-in"
-        aria-labelledby="signIn-tab"
         onSubmit={(event) => {
           event.preventDefault();
         }}

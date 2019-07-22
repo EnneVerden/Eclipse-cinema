@@ -28,7 +28,6 @@ class SignUp extends React.PureComponent {
         action="#"
         className="auth__forms__form tab-pane fade"
         id="sign-up"
-        aria-labelledby="signUp-tab"
         onSubmit={(event) => {
           event.preventDefault();
         }}

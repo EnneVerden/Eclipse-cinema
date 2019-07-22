@@ -1,19 +1,26 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../../shared/header/Header';
-import Menu from './components/menu';
+import Menu from '../../containers/menu';
 import Profile from '../../containers/profile';
 import Films from './components/films';
 import Users from './components/users';
 
-const Settings = () => (
+import ProtectedComponent from '../../shared/protectComponent/ProtectedComp';
+
+const Settings = ({ status }) => (
   <div className="settings tab-content">
     <Header />
     <Menu />
     <Profile />
-    <Films />
-    <Users />
+    <ProtectedComponent protectField={status} component={Films} />
+    <ProtectedComponent protectField={status} component={Users} />
   </div>
 );
+
+Settings.propTypes = {
+  status: PropTypes.string.isRequired,
+};
 
 export default Settings;
