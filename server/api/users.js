@@ -18,9 +18,8 @@ router.get("/users", async (req, res) => {
 
 router.delete("/users", async (req, res) => {
   try {
-    await User.deleteMany({ _id: req.body._id }, req.body);
-    const users = await User.find({});
-    res.send(users);
+    await User.deleteMany({ _id: req.body._id });
+    res.send(req.body);
   } catch (error) {
     console.log("Error: " + error);
     res.send(false);

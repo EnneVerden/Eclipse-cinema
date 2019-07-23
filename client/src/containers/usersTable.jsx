@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Users from '../pages/settings/components/users';
 
 import { fetchUsersData } from '../actions/usersData';
+import { removeUsers } from '../actions/removeUsers';
 
 class UsersContainer extends Component {
   componentDidMount() {
@@ -13,10 +14,19 @@ class UsersContainer extends Component {
     getUsersData('/api/users');
   }
 
+  removeUsers = () => {
+    const { removeAccounts, usersData } = this.props;
+    const usersArray = [];
+
+    usersData.forEach(item => (item.removeRequest ? usersArray.push(item._id) : null));
+
+    removeAccounts('/api/users', { _id: usersArray });
+  };
+
   render() {
     const { usersData } = this.props;
 
-    return <Users usersData={usersData} />;
+    return <Users usersData={usersData} removeUsers={this.removeUsers} />;
   }
 }
 
@@ -24,6 +34,7 @@ UsersContainer.propTypes = {
   usersData: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
     .isRequired,
   getUsersData: PropTypes.func.isRequired,
+  removeAccounts: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -32,6 +43,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getUsersData: url => dispatch(fetchUsersData(url)),
+  removeAccounts: (url, body) => dispatch(removeUsers(url, body)),
 });
 
 export default connect(
