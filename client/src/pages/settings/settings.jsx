@@ -4,8 +4,8 @@ import PropTypes from 'prop-types';
 import Header from '../../shared/header/Header';
 import Menu from '../../containers/menu';
 import Profile from '../../containers/profile';
-import Films from '../../containers/filmsTable';
-import Users from '../../containers/usersTable';
+import FilmsTable from '../../containers/filmsTable';
+import UsersTable from '../../containers/usersTable';
 
 import ProtectedComponent from '../../shared/protectComponent/ProtectedComp';
 
@@ -14,8 +14,8 @@ const Settings = ({ status }) => (
     <Header />
     <Menu />
     <Profile />
-    <ProtectedComponent protectField={status} component={Films} />
-    <ProtectedComponent protectField={status} component={Users} />
+    <ProtectedComponent protectField={status} component={FilmsTable} />
+    <ProtectedComponent protectField={status} component={UsersTable} />
   </div>
 );
 

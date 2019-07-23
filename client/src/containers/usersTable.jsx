@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Users from '../pages/settings/components/users';
 
 import { fetchUsersData } from '../actions/usersData';
-import { removeUsers } from '../actions/removeUsers';
+import { deleteUsers } from '../actions/deleteUsers';
 
 class UsersContainer extends Component {
   componentDidMount() {
@@ -15,12 +15,12 @@ class UsersContainer extends Component {
   }
 
   removeUsers = () => {
-    const { removeAccounts, usersData } = this.props;
+    const { deleteAccounts, usersData } = this.props;
     const usersArray = [];
 
     usersData.forEach(item => (item.removeRequest ? usersArray.push(item._id) : null));
 
-    removeAccounts('/api/users', { _id: usersArray });
+    deleteAccounts('/api/users', { _id: usersArray });
   };
 
   render() {
@@ -34,7 +34,7 @@ UsersContainer.propTypes = {
   usersData: PropTypes.oneOfType([PropTypes.string, PropTypes.array])
     .isRequired,
   getUsersData: PropTypes.func.isRequired,
-  removeAccounts: PropTypes.func.isRequired,
+  deleteAccounts: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -43,7 +43,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getUsersData: url => dispatch(fetchUsersData(url)),
-  removeAccounts: (url, body) => dispatch(removeUsers(url, body)),
+  deleteAccounts: (url, body) => dispatch(deleteUsers(url, body)),
 });
 
 export default connect(

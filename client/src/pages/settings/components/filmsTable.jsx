@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 import FilmRow from './filmRow';
 
-const Films = ({ filmsData }) => {
-  const films = filmsData.map(item => <FilmRow key={item._id} {...item} />);
+const FilmsTable = ({ filmsData, deleteFilm }) => {
+  const films = filmsData.map(item => (
+    <FilmRow key={item._id} {...item} deleteFilm={deleteFilm} />
+  ));
 
   return (
     <section className="films tab-pane fade" id="films">
@@ -29,12 +31,13 @@ const Films = ({ filmsData }) => {
   );
 };
 
-Films.propTypes = {
+FilmsTable.propTypes = {
   filmsData: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
     PropTypes.array,
   ]).isRequired,
+  deleteFilm: PropTypes.func.isRequired,
 };
 
-export default Films;
+export default FilmsTable;

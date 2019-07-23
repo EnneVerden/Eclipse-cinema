@@ -1,11 +1,11 @@
-import { REMOVE_USERS_SUCCESS } from '../actionTypes';
+import { DELETE_USERS_SUCCESS } from '../actionTypes';
 
-export const removeUsersSuccess = users => ({
-  type: REMOVE_USERS_SUCCESS,
+export const deleteUsersSuccess = users => ({
+  type: DELETE_USERS_SUCCESS,
   users,
 });
 
-export const removeUsers = (url, body) => async (dispatch) => {
+export const deleteUsers = (url, body) => async (dispatch) => {
   try {
     const response = await fetch(url, {
       method: 'DELETE',
@@ -14,7 +14,7 @@ export const removeUsers = (url, body) => async (dispatch) => {
     });
     const users = await response.json();
 
-    dispatch(removeUsersSuccess(users._id));
+    dispatch(deleteUsersSuccess(users._id));
   } catch (error) {
     console.log(`Error: ${error}`);
   }
