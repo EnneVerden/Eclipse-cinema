@@ -1,17 +1,19 @@
-.table thead th {
-  text-align: center;
-  vertical-align: middle;
-  color: #d1d1d1;
-  font-weight: 500;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  border-top: 2px solid #d1d1d1;
-}
+.table {
+  & thead th {
+    text-align: center;
+    vertical-align: middle;
+    color: #d1d1d1;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border-top: 2px solid #d1d1d1;
+  }
 
-.table tbody td {
-  text-align: center;
-  vertical-align: middle;
-  color: #d1d1d1;
-  letter-spacing: 1px;
-  border: 1px solid #424244;
+  & tbody td {
+    text-align: center;
+    vertical-align: middle;
+    color: #d1d1d1;
+    letter-spacing: 1px;
+    border: 1px solid #424244;
+  }
 }

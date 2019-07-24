@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import MyTickets from '../../../containers/profile-tickets';
+
 class Profile extends Component {
   state = {
     fullName: this.props.fullName,
@@ -89,6 +91,7 @@ class Profile extends Component {
               </form>
             </div>
           </div>
+          <MyTickets />
         </div>
       </section>
     );

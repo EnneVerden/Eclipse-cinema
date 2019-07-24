@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import Users from '../pages/settings/components/users';
+import UsersTable from '../pages/settings/components/usersTable';
 
 import { fetchUsersData } from '../actions/usersData';
 import { deleteUsers } from '../actions/deleteUsers';
@@ -26,7 +26,7 @@ class UsersContainer extends Component {
   render() {
     const { usersData } = this.props;
 
-    return <Users usersData={usersData} removeUsers={this.removeUsers} />;
+    return <UsersTable usersData={usersData} removeUsers={this.removeUsers} />;
   }
 }
 
