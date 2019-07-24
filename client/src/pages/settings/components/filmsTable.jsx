@@ -18,8 +18,7 @@ const FilmsTable = ({ filmsData, deleteFilm }) => {
               <th>poster</th>
               <th>description</th>
               <th>tags</th>
-              <th>start date</th>
-              <th>end date</th>
+              <th>display date</th>
               <th>ticket price</th>
               <th>action</th>
             </tr>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import MyTickets from '../../../containers/profile-tickets';
+import ProfileTickets from './profile-tickets';
 
 class Profile extends Component {
   state = {
@@ -91,7 +91,7 @@ class Profile extends Component {
               </form>
             </div>
           </div>
-          <MyTickets />
+          <ProfileTickets />
         </div>
       </section>
     );

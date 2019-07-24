@@ -13,11 +13,71 @@
     width: 100px;
   }
 
-  &__price {
+  &__col__film-price {
     font-size: 30px;
   }
 
   &__btn_remove {
     padding: 3px 7px;
+  }
+}
+
+@media all and (max-width: 900px) {
+  .films {
+    &__block {
+      padding-top: 30px;
+    }
+
+    &__col__film-name {
+      font-size: 30px;
+    }
+
+    &__poster {
+      width: 300px;
+    }
+
+    &__col__film-desc,
+    &__col__film-tags,
+    &__col__film-date {
+      font-size: 22px;
+    }
+
+    &__col__film-price {
+      font-size: 36px;
+    }
+
+    &__btn_remove {
+      font-size: 24px;
+    }
+  }
+}
+
+@media all and (max-width: 420px) {
+  .films {
+    &__block {
+      padding-top: 30px;
+    }
+
+    &__col__film-name {
+      font-size: 26px;
+    }
+
+    &__poster {
+      width: 250px;
+    }
+
+    &__col__film-desc,
+    &__col__film-tags,
+    &__col__film-date {
+      font-size: 18px;
+    }
+
+    &__col__film-price {
+      font-size: 32px;
+    }
+
+    &__btn_remove {
+      font-size: 20px;
+    }
   }
 }

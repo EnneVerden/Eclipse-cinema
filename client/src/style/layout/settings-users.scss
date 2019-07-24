@@ -34,3 +34,41 @@
     }
   }
 }
+
+@media all and (max-width: 900px) {
+  .users {
+    &__block {
+      padding-top: 30px;
+    }
+
+    &__avatar {
+      width: 110px;
+    }
+
+    &__col__user-name,
+    &__col__user-email,
+    &__col__user-status,
+    &__col__user-request {
+      font-size: 26px;
+    }
+  }
+}
+
+@media all and (max-width: 420px) {
+  .users {
+    &__block {
+      padding-top: 30px;
+    }
+
+    &__avatar {
+      width: 80px;
+    }
+
+    &__col__user-name,
+    &__col__user-email,
+    &__col__user-status,
+    &__col__user-request {
+      font-size: 20px;
+    }
+  }
+}

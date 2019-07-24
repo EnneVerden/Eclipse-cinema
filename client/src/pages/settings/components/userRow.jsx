@@ -5,13 +5,13 @@ const UserRow = ({
   avatar, fullName, email, status, removeRequest,
 }) => (
   <tr>
-    <td className="users__col">
+    <td>
       <img src={avatar} alt="Avatar" className="users__avatar" />
     </td>
-    <td className="users__col">{fullName}</td>
-    <td className="users__col">{email}</td>
-    <td className="users__col">{status}</td>
-    <td className="users__col">{String(removeRequest)}</td>
+    <td className="users__col__user-name">{fullName}</td>
+    <td className="users__col__user-email">{email}</td>
+    <td className="users__col__user-status">{status}</td>
+    <td className="users__col__user-request">{String(removeRequest)}</td>
   </tr>
 );
 

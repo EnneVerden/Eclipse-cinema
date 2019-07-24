@@ -3,13 +3,17 @@ import PropTypes from 'prop-types';
 
 const TicketRow = ({ name, poster, date }) => (
   <tr>
-    <td>{name}</td>
+    <td className="profile__tickets__col-name">{name}</td>
     <td>
       <img src={poster} alt="Poster" className="profile__tickets-poster" />
     </td>
-    <td>{date}</td>
+    <td className="profile__tickets__col-date">{date}</td>
     <td>
-      <button type="button" className="btn" title="Remove">
+      <button
+        type="button"
+        className="btn profile__tickets__btn_remove"
+        title="Remove"
+      >
         <i className="far fa-trash-alt" />
       </button>
     </td>
