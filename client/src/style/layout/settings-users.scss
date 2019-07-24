@@ -33,12 +33,28 @@
       color: #e03137;
     }
   }
+
+  &__phone-btn_remove {
+    display: none;
+  }
 }
 
 @media all and (max-width: 900px) {
   .users {
     &__block {
       padding-top: 30px;
+    }
+
+    &__phone-btn_remove {
+      display: block;
+      margin: 0 auto;
+      background-color: #323235;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+
+      & .fas {
+        margin-left: 10px;
+      }
     }
 
     &__avatar {
@@ -60,6 +76,18 @@
       padding-top: 30px;
     }
 
+    &__phone-btn_remove {
+      display: block;
+      margin: 0 auto;
+      background-color: #323235;
+      margin-bottom: 30px;
+      letter-spacing: 1px;
+
+      & .fas {
+        margin-left: 10px;
+      }
+    }
+
     &__avatar {
       width: 80px;
     }
@@ -69,6 +97,11 @@
     &__col__user-status,
     &__col__user-request {
       font-size: 20px;
+    }
+
+    &__btn_remove {
+      top: 0;
+      left: 0;
     }
   }
 }
