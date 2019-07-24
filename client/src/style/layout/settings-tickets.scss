@@ -110,6 +110,30 @@
   }
 }
 
+@media all and (max-width: 900px) {
+  .profile__tickets {
+    padding-top: 25px;
+
+    &-poster {
+      width: 150px;
+    }
+
+    &__col-name {
+      font-size: 22px;
+    }
+
+    &__col-date,
+    &__btn_remove {
+      font-size: 18px;
+    }
+
+    & tbody td:first-child,
+    & tbody td:last-child {
+      width: auto;
+    }
+  }
+}
+
 @media all and (max-width: 420px) {
   .profile__tickets {
     padding-top: 25px;
