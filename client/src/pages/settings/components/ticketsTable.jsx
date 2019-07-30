@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 
 import TicketRow from './ticketRow';
 
-const TicketsTable = ({ tickets }) => {
+const TicketsTable = ({ tickets, deleteTicket }) => {
   const ticket = tickets.map(item => (
     <TicketRow
       key={item._id}
+      filmID={item._id}
       name={item.name}
       poster={item.poster}
       date={item.startDate}
+      deleteTicket={deleteTicket}
     />
   ));
 
@@ -30,6 +32,7 @@ const TicketsTable = ({ tickets }) => {
 
 TicketsTable.propTypes = {
   tickets: PropTypes.oneOfType([PropTypes.string, PropTypes.array]).isRequired,
+  deleteTicket: PropTypes.func.isRequired,
 };
 
 export default TicketsTable;

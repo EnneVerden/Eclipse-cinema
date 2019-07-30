@@ -9,7 +9,11 @@ const Users = ({ usersData, removeUsers }) => {
   return (
     <section className="users tab-pane fade" id="users">
       <div className="users__block">
-        <button type="button" className="btn users__phone-btn_remove">
+        <button
+          type="button"
+          className="btn users__phone-btn_remove"
+          onClick={removeUsers}
+        >
           Delete users with positive remove request
           <i className="fas fa-user-times" />
         </button>

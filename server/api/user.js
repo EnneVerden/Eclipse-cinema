@@ -44,11 +44,29 @@ router.post("/user", async (req, res) => {
 
 router.put("/user/:id", async (req, res) => {
   try {
+    if (req.body.deletedTicket) {
+      const tickets = await User.findOne(
+        { _id: req.params.id },
+        { tickets: 1, _id: 0 }
+      );
+
+      await User.updateOne(
+        { _id: req.params.id },
+        {
+          tickets: tickets.tickets.filter(
+            item => item._id !== req.body.deletedTicket
+          )
+        }
+      );
+      res.send(req.body);
+    }
+
     if (req.body.password) {
       req.body.password = bcrypt.hashSync(req.body.password, 10);
     }
 
     await User.updateOne({ _id: req.params.id }, req.body);
+
     const user = await User.findById(
       { _id: req.params.id },
       { fullName: 1, password: 1, removeRequest: 1 }

@@ -3,6 +3,7 @@ import {
   SEND_USER_DATA_SUCCESS,
   CHANGE_USER_DATA_SUCCESS,
   SEND_REMOVE_REQUEST_SUCCESS,
+  DELETE_TICKET_SUCCESS,
   USER_IS_LOGGED_OUT,
 } from '../actionTypes';
 
@@ -22,6 +23,13 @@ const userData = (state = initialState, action) => {
       };
     case SEND_REMOVE_REQUEST_SUCCESS:
       return { ...state, removeRequest: action.newUserData.removeRequest };
+    case DELETE_TICKET_SUCCESS:
+      return {
+        ...state,
+        tickets: state.tickets.filter(
+          item => item._id !== action.deletedTicketID,
+        ),
+      };
     case USER_IS_LOGGED_OUT:
       return initialState;
     default:
