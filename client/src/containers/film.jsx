@@ -28,10 +28,17 @@ class FilmContainer extends PureComponent {
   };
 
   buyTicket = () => {
-    const { userBalance, userID, setTicket, film } = this.props;
+    const {
+      userBalance, userID, setTicket, film,
+    } = this.props;
 
     if (userBalance < film.ticketPrice) {
-      console.log('BalanceError');
+      const alert = document.querySelector('.balance-error-alert');
+      
+      alert.style.display = 'flex';          
+      setTimeout(() => {
+        alert.style.display = 'none';
+      }, 3000);
       return;
     }
 

@@ -5,6 +5,7 @@ import Info from './components/info';
 import FilmsGrid from '../../containers/filmsGrid';
 import Pagination from './components/pagination';
 import Footer from './components/footer';
+import BalanceErrorAlert from '../../shared/alerts/balance';
 
 const Home = () => (
   <div className="home">
@@ -13,6 +14,7 @@ const Home = () => (
     <FilmsGrid />
     <Pagination />
     <Footer />
+    <BalanceErrorAlert />
   </div>
 );
 
