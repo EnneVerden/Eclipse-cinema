@@ -45,6 +45,8 @@ router.post("/user", async (req, res) => {
 router.put("/user/:id", async (req, res) => {
   try {
     if (req.body.deletedTicket) {
+      const ticket = req.body.deletedTicket;
+
       const tickets = await User.findOne(
         { _id: req.params.id },
         { tickets: 1, _id: 0 }
@@ -53,12 +55,35 @@ router.put("/user/:id", async (req, res) => {
       await User.updateOne(
         { _id: req.params.id },
         {
-          tickets: tickets.tickets.filter(
-            item => item._id !== req.body.deletedTicket
-          )
+          tickets: tickets.tickets.filter(item => item._id !== ticket)
         }
       );
       res.send(req.body);
+      return;
+    }
+
+    if (req.body.buyTicket) {
+      const ticket = req.body.buyTicket;
+
+      const userInfo = await User.findById(
+        { _id: req.params.id },
+        { balance: 1, tickets: 1, _id: 0 }
+      );
+
+      if (userInfo.balance < ticket.ticketPrice) {
+        res.send("BalanceError");
+        return;
+      }
+
+      await User.updateOne(
+        { _id: req.params.id },
+        {
+          tickets: [...userInfo.tickets, ticket],
+          balance: userInfo.balance - ticket.ticketPrice
+        }
+      );
+      res.send(req.body);
+      return;
     }
 
     if (req.body.password) {
