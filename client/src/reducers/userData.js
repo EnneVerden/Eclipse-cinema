@@ -4,6 +4,7 @@ import {
   CHANGE_USER_DATA_SUCCESS,
   SEND_REMOVE_REQUEST_SUCCESS,
   DELETE_TICKET_SUCCESS,
+  BUY_TICKET_SUCCESS,
   USER_IS_LOGGED_OUT,
 } from '../actionTypes';
 
@@ -23,6 +24,12 @@ const userData = (state = initialState, action) => {
       };
     case SEND_REMOVE_REQUEST_SUCCESS:
       return { ...state, removeRequest: action.newUserData.removeRequest };
+    case BUY_TICKET_SUCCESS:
+      return {
+        ...state,
+        tickets: [...state.tickets, action.ticket],
+        balance: state.balance - action.ticket.ticketPrice,
+      };
     case DELETE_TICKET_SUCCESS:
       return {
         ...state,

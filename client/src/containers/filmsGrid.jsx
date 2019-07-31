@@ -13,9 +13,9 @@ class FilmsGridContainer extends Component {
   }
 
   render() {
-    const { filmsData, userTickets } = this.props;
+    const { filmsData } = this.props;
 
-    return <FilmsGrid filmsData={filmsData} userTickets={userTickets} />;
+    return <FilmsGrid filmsData={filmsData} />;
   }
 }
 
@@ -26,15 +26,9 @@ FilmsGridContainer.propTypes = {
     PropTypes.number,
     PropTypes.array,
   ]).isRequired,
-  userTickets: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.array,
-  ]).isRequired,
 };
 
 const mapStateToProps = state => ({
-  userTickets: state.userData.tickets,
   filmsData: state.filmsData,
 });
 
