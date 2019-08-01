@@ -1,4 +1,6 @@
 @import "./helpers/fonts.scss";
+@import "./helpers/animations.scss";
+
 @import "./components/buttons.scss";
 @import "./components/preloader.scss";
 @import "./components/alerts.scss";
@@ -17,5 +19,6 @@
 @import "./layout/settings-profile.scss";
 @import "./layout/settings-table.scss";
 @import "./layout/settings-films.scss";
+@import "./layout/settings-filmsAdd.scss";
 @import "./layout/settings-users.scss";
 @import "./layout/settings-tickets.scss";

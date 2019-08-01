@@ -1,0 +1,155 @@
+.films__add {
+  margin-bottom: 50px;
+
+  &__title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__btn {
+      padding: 7px 5px;
+    }
+
+    &__text {
+      font-size: 24px;
+      letter-spacing: 2px;
+    }
+
+    &__arrow {
+      display: none;
+      font-size: 18px;
+      margin-left: 7px;
+
+      &_active {
+        display: inline-block;
+      }
+    }
+
+    &__line {
+      width: 84%;
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 2px;
+        width: 100%;
+        background: #4b4b4f;
+        border-radius: 40%;
+      }
+    }
+  }
+
+  &__panel {
+    padding-top: 20px;
+    display: none;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    animation-name: slideUp;
+    -webkit-animation-name: slideUp;
+
+    animation-duration: 0.5s;
+    -webkit-animation-duration: 0.5s;
+
+    animation-timing-function: ease;
+    -webkit-animation-timing-function: ease;
+
+    &_active {
+      opacity: 1;
+      transition: opacity 0.5s;
+
+      animation-name: slideDown;
+      -webkit-animation-name: slideDown;
+
+      animation-duration: 0.5s;
+      -webkit-animation-duration: 0.5s;
+
+      animation-timing-function: ease;
+      -webkit-animation-timing-function: ease;
+    }
+
+    &__left-side {
+      width: 100%;
+      margin-right: 20px;
+    }
+
+    &__right-side {
+      width: 100%;
+      margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    &__inp {
+      margin: 15px 0;
+      color: #d1d1d1;
+      font-size: 18px;
+      background: none;
+
+      &:focus {
+        color: #d1d1d1;
+        background: none;
+      }
+    }
+
+    &__btn {
+      margin: 15px 0;
+      padding: 7px 50px;
+      color: #fff;
+      background-color: #5eb75e;
+    }
+  }
+}
+
+@media all and (max-width: 900px) {
+  .films__add {
+    &__title {
+      &__line {
+        width: 75%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 420px) {
+  .films__add {
+    margin-bottom: 30px;
+
+    &__title {
+      justify-content: center;
+
+      &__line {
+        display: none;
+      }
+    }
+
+    &__panel {
+      width: 100%;
+      flex-direction: column;
+
+      &__left-side,
+      &__right-side {
+        margin: 0;
+      }
+
+      &__right-side {
+        align-items: center;
+      }
+
+      &__inp {
+        width: 100%;
+      }
+
+      &__btn {
+        width: 100%;
+      }
+    }
+  }
+}
