@@ -33,8 +33,8 @@ Therefore...
 
 - Through the API validator.
   1. Register on the application.
-  2. Enter in the address bar address with your database port (My port: 4000): [localhost:4000/api/users](http://localhost:4000/userApi/users)
+  2. Enter in the address bar address with your database port (My port: 4000): [localhost:4000/api/users/get](http://localhost:4000/api/users/get)
   3. In the list we select the user we need and copy his "`id`".
-  4. Enter in the address bar: [localhost:4000/api/user/`copiedID`](http://localhost:4000/userApi/user)
+  4. Enter in the address bar: [localhost:4000/api/users/`copiedID`/change](http://localhost:4000/api/users/`copiedID`/change)
   5. Choose PUT request and select JSON object.
   6. In the request body we enter: "`{ "status": "admin" }`".
