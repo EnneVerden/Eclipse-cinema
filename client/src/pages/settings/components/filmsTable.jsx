@@ -1,12 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import FilmRow from './filmRow';
+import FilmRow from '../../../containers/filmRow';
 
-const FilmsTable = ({ filmsData, deleteFilm }) => {
-  const films = filmsData.map(item => (
-    <FilmRow key={item._id} {...item} deleteFilm={deleteFilm} />
-  ));
+const FilmsTable = ({ filmsData }) => {
+  const films = filmsData.map(item => <FilmRow key={item._id} film={item} />);
 
   return (
     <section className="films tab-pane fade" id="films">
@@ -36,7 +34,6 @@ FilmsTable.propTypes = {
     PropTypes.number,
     PropTypes.array,
   ]).isRequired,
-  deleteFilm: PropTypes.func.isRequired,
 };
 
 export default FilmsTable;

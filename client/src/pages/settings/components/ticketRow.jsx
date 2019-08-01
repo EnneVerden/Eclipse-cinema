@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const TicketRow = ({
-  filmID, name, poster, date, deleteTicket,
-}) => (
+const TicketRow = ({ ticket: { name, poster, startDate }, deleteTicket }) => (
   <tr>
     <td className="profile__tickets__col-name">{name}</td>
     <td>
       <img src={poster} alt="Poster" className="profile__tickets-poster" />
     </td>
-    <td className="profile__tickets__col-date">{date}</td>
+    <td className="profile__tickets__col-date">{startDate}</td>
     <td>
       <button
         type="button"
         className="btn profile__tickets__btn_remove"
-        onClick={() => deleteTicket(filmID)}
+        onClick={deleteTicket}
       >
         <i className="far fa-trash-alt" />
       </button>
@@ -23,10 +21,7 @@ const TicketRow = ({
 );
 
 TicketRow.propTypes = {
-  filmID: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
+  ticket: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   deleteTicket: PropTypes.func.isRequired,
 };
 

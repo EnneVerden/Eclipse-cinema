@@ -1,37 +1,33 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import TicketsTable from '../pages/settings/components/ticketsTable';
+import TicketRow from '../pages/settings/components/ticketRow';
 import { deleteTicket } from '../actions/deleteTicket';
 
-class TicketsTableContainer extends Component {
-  deleteTicket = (filmID) => {
-    const { userID, removeTicket } = this.props;
+class TicketRowContainer extends PureComponent {
+  deleteTicket = () => {
+    const { userID, filmID, removeTicket } = this.props;
 
     removeTicket(`api/users/${userID}/change`, { deletedTicket: filmID });
   };
 
   render() {
-    const { tickets } = this.props;
+    const { ticket } = this.props;
 
-    return <TicketsTable tickets={tickets} deleteTicket={this.deleteTicket} />;
+    return <TicketRow ticket={ticket} deleteTicket={this.deleteTicket} />;
   }
 }
 
-TicketsTableContainer.propTypes = {
-  tickets: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-    PropTypes.array,
-  ]).isRequired,
+TicketRowContainer.propTypes = {
+  ticket: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   userID: PropTypes.string.isRequired,
+  filmID: PropTypes.string.isRequired,
   removeTicket: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
   userID: state.userData._id,
-  tickets: state.userData.tickets,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -41,4 +37,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(TicketsTableContainer);
+)(TicketRowContainer);

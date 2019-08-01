@@ -2,14 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const FilmRow = ({
-  _id,
-  name,
-  poster,
-  description,
-  tags,
-  startDate,
-  endDate,
-  ticketPrice,
+  film: {
+    name, poster, description, tags, startDate, endDate, ticketPrice,
+  },
   deleteFilm,
 }) => (
   <tr>
@@ -28,7 +23,7 @@ const FilmRow = ({
         type="button"
         className="btn films__btn_remove"
         title="Remove"
-        onClick={() => deleteFilm(_id)}
+        onClick={deleteFilm}
       >
         <i className="far fa-trash-alt" />
       </button>
@@ -37,14 +32,11 @@ const FilmRow = ({
 );
 
 FilmRow.propTypes = {
-  _id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  poster: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
-  tags: PropTypes.string.isRequired,
-  startDate: PropTypes.string.isRequired,
-  endDate: PropTypes.string.isRequired,
-  ticketPrice: PropTypes.number.isRequired,
+  film: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.object,
+  ]).isRequired,
   deleteFilm: PropTypes.func.isRequired,
 };
 
