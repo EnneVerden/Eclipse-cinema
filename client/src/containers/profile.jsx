@@ -44,14 +44,14 @@ class ProfileContainer extends Component {
       newData = { fullName: newName, password: newPassword };
     }
 
-    changeData(`api/user/${_id}`, newData);
+    changeData(`api/users/${_id}/change`, newData);
   };
 
   removeAccount = () => {
     const { _id, removeRequest, sendRequest } = this.props;
     const request = !removeRequest;
 
-    sendRequest(`api/user/${_id}`, { removeRequest: request });
+    sendRequest(`api/users/${_id}/change`, { removeRequest: request });
   };
 
   render() {

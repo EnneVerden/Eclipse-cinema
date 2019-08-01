@@ -16,7 +16,7 @@ class SignUpContainer extends Component {
       return;
     }
 
-    postUserData('/api/user/', {
+    postUserData('api/users/addUser', {
       email,
       fullName,
       password,

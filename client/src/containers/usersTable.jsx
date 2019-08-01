@@ -11,7 +11,7 @@ class UsersContainer extends Component {
   componentDidMount() {
     const { getUsersData } = this.props;
 
-    getUsersData('/api/users');
+    getUsersData('api/users/get');
   }
 
   removeUsers = () => {
@@ -20,7 +20,7 @@ class UsersContainer extends Component {
 
     usersData.forEach(item => (item.removeRequest ? usersArray.push(item._id) : null));
 
-    deleteAccounts('/api/users', { _id: usersArray });
+    deleteAccounts('api/users/delete', { _id: usersArray });
   };
 
   render() {

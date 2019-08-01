@@ -9,7 +9,7 @@ class FilmTableContainer extends Component {
   deleteFilm = (filmID) => {
     const { removeFilm } = this.props;
 
-    removeFilm(`/api/film/${filmID}`);
+    removeFilm(`api/films/${filmID}/delete`);
   };
 
   render() {

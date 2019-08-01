@@ -9,7 +9,7 @@ class TicketsTableContainer extends Component {
   deleteTicket = (filmID) => {
     const { userID, removeTicket } = this.props;
 
-    removeTicket(`api/user/${userID}`, { deletedTicket: filmID });
+    removeTicket(`api/users/${userID}/change`, { deletedTicket: filmID });
   };
 
   render() {

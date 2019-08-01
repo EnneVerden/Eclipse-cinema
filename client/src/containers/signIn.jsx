@@ -11,7 +11,7 @@ class SignInContainer extends Component {
 
     if (!email || !password) return;
     getUserData(
-      `/api/user/?email=${encodeURIComponent(
+      `api/users/getUser/?email=${encodeURIComponent(
         email,
       )}&password=${encodeURIComponent(password)}`,
     );

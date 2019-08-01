@@ -1,8 +1,8 @@
 const express = require("express");
 const router = express.Router();
-const { Film } = require("../models/filmModel");
+const Film = require("../models/filmModel");
 
-router.get("/films", async (req, res) => {
+router.get("/films/get", async (req, res) => {
   try {
     const films = await Film.find({});
     res.send(films);
@@ -12,7 +12,7 @@ router.get("/films", async (req, res) => {
   }
 });
 
-router.post("/film", async (req, res) => {
+router.post("/films/add", async (req, res) => {
   try {
     const film = await Film.create(req.body);
     console.log("New film: " + film);
@@ -23,9 +23,9 @@ router.post("/film", async (req, res) => {
   }
 });
 
-router.put("/film/:id", async (req, res) => {
+router.put("/films/:filmId/change", async (req, res) => {
   try {
-    await Film.findByIdAndUpdate({ _id: req.params.id }, req.body);
+    await Film.findByIdAndUpdate({ _id: req.params.filmId }, req.body);
     res.send(req.body);
   } catch (error) {
     console.log("Error: " + error);
@@ -33,10 +33,10 @@ router.put("/film/:id", async (req, res) => {
   }
 });
 
-router.delete("/film/:id", async (req, res) => {
+router.delete("/films/:filmId/delete", async (req, res) => {
   try {
-    await Film.deleteOne({ _id: req.params.id });
-    res.send({ _id: req.params.id });
+    await Film.deleteOne({ _id: req.params.filmId });
+    res.send({ _id: req.params.filmId });
   } catch (error) {
     console.log("Error: " + error);
     res.send(false);

@@ -13,4 +13,4 @@ const FilmSchema = new Schema({
 
 const Film = mongoose.model("film", FilmSchema);
 
-module.exports = { Film };
+module.exports = Film;

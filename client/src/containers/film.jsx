@@ -34,15 +34,15 @@ class FilmContainer extends PureComponent {
 
     if (userBalance < film.ticketPrice) {
       const alert = document.querySelector('.balance-error-alert');
-      
-      alert.style.display = 'flex';          
+
+      alert.style.display = 'flex';
       setTimeout(() => {
         alert.style.display = 'none';
       }, 3000);
       return;
     }
 
-    setTicket(`api/user/${userID}`, { buyTicket: film });
+    setTicket(`api/users/${userID}/change`, { buyTicket: film });
   };
 
   render() {

@@ -9,7 +9,7 @@ class FilmsGridContainer extends Component {
   componentDidMount() {
     const { getFilmsData } = this.props;
 
-    getFilmsData('/api/films');
+    getFilmsData('/api/films/get');
   }
 
   render() {
