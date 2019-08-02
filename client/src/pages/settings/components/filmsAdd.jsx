@@ -1,7 +1,7 @@
 import React from 'react';
 
 import FilmsAddTitle from './filmsAddTitle';
-import FilmsAddPanel from './filmsAddPanel';
+import FilmsAddPanel from '../../../containers/filmsAddPanel';
 
 const FilmsAdd = () => (
   <div className="films__add">
