@@ -2,9 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import FilmRow from '../../../containers/filmRow';
+import Preloader from '../../../shared/preloader/Preloader';
 
 const FilmsTable = ({ filmsData }) => {
-  const films = filmsData.map(item => <FilmRow key={item._id} film={item} />);
+  const film = filmsData.map(item => <FilmRow key={item._id} film={item} />);
+
+  const content = filmsData.length ? (
+    film
+  ) : (
+    <tr>
+      <td colSpan="7">
+        <Preloader />
+      </td>
+    </tr>
+  );
 
   return (
     <table className="table">
@@ -19,7 +30,7 @@ const FilmsTable = ({ filmsData }) => {
           <th>action</th>
         </tr>
       </thead>
-      <tbody>{films}</tbody>
+      <tbody>{content}</tbody>
     </table>
   );
 };

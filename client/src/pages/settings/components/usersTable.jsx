@@ -2,9 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import UserRow from './userRow';
+import Preloader from '../../../shared/preloader/Preloader';
 
 const Users = ({ usersData, removeUsers }) => {
-  const users = usersData.map(item => <UserRow key={item._id} {...item} />);
+  const user = usersData.map(item => <UserRow key={item._id} {...item} />);
+
+  const content = usersData.length ? (
+    user
+  ) : (
+    <tr>
+      <td colSpan="5">
+        <Preloader />
+      </td>
+    </tr>
+  );
 
   return (
     <section className="users tab-pane fade" id="users">
@@ -39,7 +50,7 @@ const Users = ({ usersData, removeUsers }) => {
               </th>
             </tr>
           </thead>
-          <tbody>{users}</tbody>
+          <tbody>{content}</tbody>
         </table>
       </div>
     </section>
