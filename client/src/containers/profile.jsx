@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -7,8 +7,14 @@ import Profile from '../pages/settings/components/profile';
 import { changeUserData } from '../actions/userDataChange';
 import { sendRemoveRequest } from '../actions/deleteAccount';
 
-class ProfileContainer extends Component {
-  componentDidMount() {
+class ProfileContainer extends PureComponent {
+  state = {
+    fullName: this.props.fullName,
+    newPassword: '',
+    currentPassword: '',
+  };
+
+  componentDidMount = () => {
     const { removeRequest } = this.props;
     const removeBtn = document.querySelector('.profile__btn_remove');
 
@@ -18,12 +24,12 @@ class ProfileContainer extends Component {
     }
   }
 
-  componentWillUpdate(prevProps) {
+  componentDidUpdate = (prevProps) => {
     const { removeRequest } = this.props;
     const removeBtn = document.querySelector('.profile__btn_remove');
 
     if (prevProps.removeRequest !== removeRequest) {
-      if (!removeRequest) {
+      if (removeRequest) {
         removeBtn.classList.add('activated-remove');
         removeBtn.textContent = 'Cancel removing';
       } else {
@@ -33,15 +39,24 @@ class ProfileContainer extends Component {
     }
   }
 
-  changeUserData = (newName, newPassword) => {
+  handleChange = (event) => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  changeUserData = () => {
+    const { fullName, newPassword } = this.state;
     const { _id, changeData } = this.props;
     let newData = {};
 
-    if (newName === '' && newPassword === '') return;
-    if (newName !== '') newData = { fullName: newName };
+    if (fullName === '' && newPassword === '') return;
+    if (fullName !== '') newData = { fullName };
     if (newPassword !== '') newData = { password: newPassword };
-    if (newName !== '' && newPassword !== '') {
-      newData = { fullName: newName, password: newPassword };
+    if (fullName !== '' && newPassword !== '') {
+      newData = { fullName, password: newPassword };
     }
 
     changeData(`api/users/${_id}/change`, newData);
@@ -55,10 +70,12 @@ class ProfileContainer extends Component {
   };
 
   render() {
-    const { avatar, fullName, balance } = this.props;
+    const { fullName } = this.state;
+    const { avatar, balance } = this.props;
 
     return (
       <Profile
+        handleChange={this.handleChange}
         changeUserData={this.changeUserData}
         avatar={avatar}
         fullName={fullName}

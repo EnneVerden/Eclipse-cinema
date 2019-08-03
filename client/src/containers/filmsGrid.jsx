@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import FilmsGrid from '../pages/home/components/filmsGrid';
 import { fetchFilmsData } from '../actions/filmsData';
 
-class FilmsGridContainer extends Component {
-  componentDidMount() {
+class FilmsGridContainer extends PureComponent {
+  componentDidMount = () => {
     const { getFilmsData } = this.props;
 
     getFilmsData('/api/films/get');
-  }
+  };
 
   render() {
     const { filmsData } = this.props;

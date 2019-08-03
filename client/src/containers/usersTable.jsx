@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -7,8 +7,8 @@ import UsersTable from '../pages/settings/components/usersTable';
 import { fetchUsersData } from '../actions/usersData';
 import { deleteUsers } from '../actions/deleteUsers';
 
-class UsersContainer extends Component {
-  componentDidMount() {
+class UsersContainer extends PureComponent {
+  componentDidMount = () => {
     const { getUsersData } = this.props;
 
     getUsersData('api/users/get');

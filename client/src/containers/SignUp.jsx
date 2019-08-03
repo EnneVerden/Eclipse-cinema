@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -6,8 +6,24 @@ import SignUp from '../pages/auth/components/signUp';
 import { sendUserData } from '../actions/userRegister';
 import throwAuthError from '../actions/authError';
 
-class SignUpContainer extends Component {
-  registration = (email, fullName, password, confirmPass) => {
+class SignUpContainer extends PureComponent {
+  state = {
+    fullName: '',
+    email: '',
+    password: '',
+    confirmPass: '',
+  };
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  registration = () => {
+    const { email, fullName, password, confirmPass } = this.state;
     const { postUserData, throwAuthErr } = this.props;
 
     if (!email || !fullName || !password || !confirmPass) return;
@@ -26,7 +42,13 @@ class SignUpContainer extends Component {
   render() {
     const { errorText } = this.props;
 
-    return <SignUp registration={this.registration} errorText={errorText} />;
+    return (
+      <SignUp
+        handleChange={this.handleChange}
+        registration={this.registration}
+        errorText={errorText}
+      />
+    );
   }
 }
 
