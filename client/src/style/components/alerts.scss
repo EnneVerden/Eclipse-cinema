@@ -1,10 +1,17 @@
-.balance-error-alert {
+.error-alert {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  left: 50%;
   display: flex;
   justify-content: center;
   display: none;
+
+  &__info {
+    position: relative;
+    width: 100%;
+    letter-spacing: 1px;
+    font-size: 18px;
+  }
 
   &__icon {
     position: absolute;
@@ -18,27 +25,29 @@
     height: 100%;
   }
 
-  &__info {
-    width: 40%;
-    text-align: center;
-    letter-spacing: 1px;
-    font-size: 18px;
+  &__text {
+    padding-left: 3rem;
   }
 }
 
 @media all and (max-width: 768px) {
-  .balance-error-alert {
+  .error-alert {
     &__info {
-      width: 90%;
       font-size: 20px;
     }
   }
 }
 
 @media all and (max-width: 420px) {
-  .balance-error-alert {
+  .error-alert {
     &__info {
-      padding-left: 70px;
+      width: 90%;
+      text-align: center;
+      padding-left: 3rem;
+    }
+
+    &__text {
+      padding-left: 0;
     }
   }
 }

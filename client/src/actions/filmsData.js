@@ -1,4 +1,5 @@
 import { FETCH_FILMS_DATA_SUCCESS } from '../actionTypes';
+import { throwError } from './throwError';
 
 export const fetchFilmsDataSuccess = films => ({
   type: FETCH_FILMS_DATA_SUCCESS,
@@ -10,8 +11,15 @@ export const fetchFilmsData = url => async (dispatch) => {
     const response = await fetch(url);
     const films = await response.json();
 
-    dispatch(fetchFilmsDataSuccess(films));
+    return dispatch(fetchFilmsDataSuccess(films));
   } catch (error) {
-    console.log(`Something wrong.\nPerhaps it's ${error}`);
+    switch (error.message) {
+      case 'Failed to fetch':
+        return dispatch(throwError('No internet connection!'));
+      case 'Unexpected token P in JSON at position 0':
+        return dispatch(throwError('Server is not avaible!'));
+      default:
+        return dispatch(throwError('Unknown error!'));
+    }
   }
 };

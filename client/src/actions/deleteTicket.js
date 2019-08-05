@@ -1,4 +1,5 @@
 import { DELETE_TICKET_SUCCESS } from '../actionTypes';
+import { throwError } from './throwError';
 
 export const deleteTicketSuccess = deletedTicketID => ({
   type: DELETE_TICKET_SUCCESS,
@@ -14,9 +15,15 @@ export const deleteTicket = (url, body) => async (dispatch) => {
     });
 
     const deletedTicketID = await response.json();
-
-    dispatch(deleteTicketSuccess(deletedTicketID.deletedTicket));
+    return dispatch(deleteTicketSuccess(deletedTicketID.deletedTicket));
   } catch (error) {
-    console.log(`Error: ${error}`);
+    switch (error.message) {
+      case 'Failed to fetch':
+        return dispatch(throwError('No internet connection!'));
+      case 'Unexpected token P in JSON at position 0':
+        return dispatch(throwError('Server is not avaible!'));
+      default:
+        return dispatch(throwError('Unknown error!'));
+    }
   }
 };

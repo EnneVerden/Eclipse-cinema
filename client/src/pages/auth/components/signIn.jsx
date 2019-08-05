@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SignIn = ({ handleChange, authorization, errorText }) => (
+const SignIn = ({ handleChange, authorization }) => (
   <form
     action="#"
     className="auth__forms__form tab-pane fade show active"
@@ -26,7 +26,6 @@ const SignIn = ({ handleChange, authorization, errorText }) => (
       placeholder="Password"
       required
     />
-    <p className="warning">{errorText}</p>
     <button
       type="submit"
       className="button auth__forms__btn btn"
@@ -40,7 +39,6 @@ const SignIn = ({ handleChange, authorization, errorText }) => (
 SignIn.propTypes = {
   handleChange: PropTypes.func.isRequired,
   authorization: PropTypes.func.isRequired,
-  errorText: PropTypes.string.isRequired,
 };
 
 export default SignIn;

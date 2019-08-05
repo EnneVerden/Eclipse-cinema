@@ -1,5 +1,5 @@
 import { FETCH_USER_DATA_SUCCESS } from '../actionTypes';
-import throwAuthError from './authError';
+import { throwError } from './throwError';
 
 export const fetchUserDataSuccess = user => ({
   type: FETCH_USER_DATA_SUCCESS,
@@ -9,14 +9,21 @@ export const fetchUserDataSuccess = user => ({
 export const fetchUserData = url => async (dispatch) => {
   try {
     const response = await fetch(url);
-    const user = await response.json();
 
-    if (user !== false) {
-      dispatch(fetchUserDataSuccess(user));
-    } else {
-      dispatch(throwAuthError('Invalid login or password'));
+    if (response.status === 400) {
+      return dispatch(throwError(response.statusText));
     }
+
+    const user = await response.json();
+    return dispatch(fetchUserDataSuccess(user));
   } catch (error) {
-    console.log(`Something wrong.\nPerhaps it's ${error}`);
+    switch (error.message) {
+      case 'Failed to fetch':
+        return dispatch(throwError('No internet connection!'));
+      case 'Unexpected token P in JSON at position 0':
+        return dispatch(throwError('Server is not avaible!'));
+      default:
+        return dispatch(throwError('Unknown error!'));
+    }
   }
 };

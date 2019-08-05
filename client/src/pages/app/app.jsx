@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router } from 'react-router-dom';
 
-import Auth from '../auth/Auth';
-import Home from '../home/Home';
+import Auth from '../auth/auth';
+import Home from '../home/home';
 import Settings from '../../containers/settings';
 import ProtectedRoute from '../../shared/protectComponent/ProtectedRoute';
 

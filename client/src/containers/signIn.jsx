@@ -32,12 +32,10 @@ class SignInContainer extends PureComponent {
   };
 
   render() {
-    const { errorText } = this.props;
     return (
       <SignIn
         handleChange={this.handleChange}
         authorization={this.authorization}
-        errorText={errorText}
       />
     );
   }
@@ -45,18 +43,13 @@ class SignInContainer extends PureComponent {
 
 SignInContainer.propTypes = {
   getUserData: PropTypes.func.isRequired,
-  errorText: PropTypes.string.isRequired,
 };
-
-const mapStateToProps = state => ({
-  errorText: state.authError.error,
-});
 
 const mapDispatchToProps = dispatch => ({
   getUserData: url => dispatch(fetchUserData(url)),
 });
 
 export default connect(
-  mapStateToProps,
+  undefined,
   mapDispatchToProps,
 )(SignInContainer);

@@ -10,20 +10,24 @@ router.get("/users/get", async (req, res) => {
       {},
       { avatar: 1, fullName: 1, email: 1, status: 1, removeRequest: 1 }
     );
-    res.send(users);
+
+    return res.status(200).send(users);
   } catch (error) {
     console.log("Error: " + error);
-    res.send(false);
+    res.statusMessage = "Internal server error!";
+    return res.status(500).end();
   }
 });
 
 router.delete("/users/delete", async (req, res) => {
   try {
     await User.deleteMany({ _id: req.body._id });
-    res.send(req.body);
+
+    return res.status(200).send(req.body);
   } catch (error) {
     console.log("Error: " + error);
-    res.send(false);
+    res.statusMessage = "Internal server error!";
+    return res.status(500).end();
   }
 });
 
@@ -31,15 +35,16 @@ router.get("/users/getUser", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.query.email });
 
-    if (!user) res.send(false);
-    if (!bcrypt.compareSync(req.query.password, user.password)) {
-      res.send(false);
+    if (!user || !bcrypt.compareSync(req.query.password, user.password)) {
+      res.statusMessage = "Invalid email or password!";
+      return res.status(400).end();
     }
 
-    res.send(user);
+    return res.status(200).send(user);
   } catch (error) {
     console.log("Error: " + error);
-    res.send(false);
+    res.statusMessage = "Internal server error!";
+    return res.status(500).end();
   }
 });
 
@@ -47,21 +52,24 @@ router.post("/users/addUser", async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
 
-    if (!user) {
-      const hashPassword = bcrypt.hashSync(req.body.password, 10);
-      const user = await User.create({
-        email: req.body.email,
-        fullName: req.body.fullName,
-        password: hashPassword
-      });
-      console.log("New user: " + user);
-      res.send(user);
-    } else {
-      res.send(false);
+    if (user) {
+      res.statusMessage = "User with this email already exists!";
+      return res.status(400).send();
     }
+
+    const hashPassword = bcrypt.hashSync(req.body.password, 10);
+    user = await User.create({
+      email: req.body.email,
+      fullName: req.body.fullName,
+      password: hashPassword
+    });
+
+    console.log("New user: " + user);
+    return res.status(200).send(user);
   } catch (error) {
     console.log("Error: " + error);
-    res.send(false);
+    res.statusMessage = "Internal server error!";
+    return res.status(500).end();
   }
 });
 
@@ -81,8 +89,7 @@ router.put("/users/:userId/change", async (req, res) => {
           tickets: tickets.tickets.filter(item => item._id !== ticket)
         }
       );
-      res.send(req.body);
-      return;
+      return res.status(200).send(req.body);
     }
 
     if (req.body.buyTicket) {
@@ -94,8 +101,8 @@ router.put("/users/:userId/change", async (req, res) => {
       );
 
       if (userInfo.balance < ticket.ticketPrice) {
-        res.send("BalanceError");
-        return;
+        res.statusMessage = "Insufficient funds on balance!";
+        return res.status(400).send();
       }
 
       await User.updateOne(
@@ -105,8 +112,7 @@ router.put("/users/:userId/change", async (req, res) => {
           balance: userInfo.balance - ticket.ticketPrice
         }
       );
-      res.send(req.body);
-      return;
+      return res.status(200).send(req.body);
     }
 
     if (req.body.password) {
@@ -120,10 +126,11 @@ router.put("/users/:userId/change", async (req, res) => {
       { fullName: 1, password: 1, removeRequest: 1 }
     );
 
-    res.send(user);
+    return res.status(200).send(user);
   } catch (error) {
     console.log("Error: " + error);
-    res.send(false);
+    res.statusMessage = "Internal server error!";
+    return res.status(500).end();
   }
 });
 

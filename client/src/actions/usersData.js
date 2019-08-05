@@ -1,4 +1,5 @@
 import { FETCH_USERS_DATA_SUCCESS } from '../actionTypes';
+import { throwError } from './throwError';
 
 export const fetchUsersDataSuccess = users => ({
   type: FETCH_USERS_DATA_SUCCESS,
@@ -10,8 +11,15 @@ export const fetchUsersData = url => async (dispatch) => {
     const response = await fetch(url);
     const users = await response.json();
 
-    dispatch(fetchUsersDataSuccess(users));
+    return dispatch(fetchUsersDataSuccess(users));
   } catch (error) {
-    console.log(`Error: ${error}`);
+    switch (error.message) {
+      case 'Failed to fetch':
+        return dispatch(throwError('No internet connection!'));
+      case 'Unexpected token P in JSON at position 0':
+        return dispatch(throwError('Server is not avaible!'));
+      default:
+        return dispatch(throwError('Unknown error!'));
+    }
   }
 };

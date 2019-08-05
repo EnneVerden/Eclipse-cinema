@@ -1,13 +1,19 @@
-import { THROW_AUTHENTICATION_ERROR, USER_IS_LOGGED_OUT } from '../actionTypes';
+import {
+  THROW_ERROR,
+  CAUSE_ERROR_RESET,
+  USER_IS_LOGGED_OUT,
+} from '../actionTypes';
 
 const initialState = {
-  error: '',
+  errorText: '',
 };
 
 const authError = (state = initialState, action) => {
   switch (action.type) {
-    case THROW_AUTHENTICATION_ERROR:
-      return { ...state, error: action.errorText };
+    case THROW_ERROR:
+      return { errorText: action.error };
+    case CAUSE_ERROR_RESET:
+      return initialState;
     case USER_IS_LOGGED_OUT:
       return initialState;
     default:

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SignUp = ({ handleChange, registration, errorText }) => (
+const SignUp = ({ handleChange, registration }) => (
   <form
     action="#"
     className="auth__forms__form tab-pane fade"
@@ -42,7 +42,6 @@ const SignUp = ({ handleChange, registration, errorText }) => (
       placeholder="Confirm password"
       required
     />
-    <p className="warning">{errorText}</p>
     <button
       type="submit"
       className="button auth__forms__btn btn"
@@ -56,11 +55,6 @@ const SignUp = ({ handleChange, registration, errorText }) => (
 SignUp.propTypes = {
   handleChange: PropTypes.func.isRequired,
   registration: PropTypes.func.isRequired,
-  errorText: PropTypes.string,
-};
-
-SignUp.defaultProps = {
-  errorText: '',
 };
 
 export default SignUp;

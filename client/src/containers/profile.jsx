@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Profile from '../pages/settings/components/profile';
 
-import { changeUserData } from '../actions/userDataChange';
+import { changeUserData } from '../actions/userChange';
 import { sendRemoveRequest } from '../actions/deleteAccount';
 
 class ProfileContainer extends PureComponent {

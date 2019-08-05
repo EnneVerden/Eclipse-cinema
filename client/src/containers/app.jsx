@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import App from '../pages/app/App';
+import App from '../pages/app/app';
 
 const mapStateToProps = state => ({
   email: state.userData.email,

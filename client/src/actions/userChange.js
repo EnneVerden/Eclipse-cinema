@@ -1,25 +1,21 @@
-import { SEND_USER_DATA_SUCCESS } from '../actionTypes';
+import { CHANGE_USER_DATA_SUCCESS } from '../actionTypes';
 import { throwError } from './throwError';
 
-export const sendUserDataSuccess = user => ({
-  type: SEND_USER_DATA_SUCCESS,
-  user,
+export const changeUserDataSuccess = newUserData => ({
+  type: CHANGE_USER_DATA_SUCCESS,
+  newUserData,
 });
 
-export const sendUserData = (url, body) => async (dispatch) => {
+export const changeUserData = (url, body) => async (dispatch) => {
   try {
     const response = await fetch(url, {
-      method: 'POST',
+      method: 'PUT',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(body),
     });
 
-    if (response.status === 400) {
-      return dispatch(throwError(response.statusText));
-    }
-
-    const user = await response.json();
-    return dispatch(sendUserDataSuccess(user));
+    const newUserData = await response.json();
+    return dispatch(changeUserDataSuccess(newUserData));
   } catch (error) {
     switch (error.message) {
       case 'Failed to fetch':

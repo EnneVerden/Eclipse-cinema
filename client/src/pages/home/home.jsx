@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Header from '../../shared/header/Header';
+import Header from '../../shared/header/header';
 import Info from './components/info';
 import FilmsGrid from '../../containers/filmsGrid';
 import Pagination from './components/pagination';
 import Footer from './components/footer';
-import BalanceErrorAlert from '../../shared/alerts/balance';
+import ErrorAlert from '../../containers/alert';
 
 const Home = () => (
   <div className="home">
@@ -14,7 +14,7 @@ const Home = () => (
     <FilmsGrid />
     <Pagination />
     <Footer />
-    <BalanceErrorAlert />
+    <ErrorAlert />
   </div>
 );
 

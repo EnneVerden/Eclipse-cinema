@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import Film from '../pages/home/components/film';
 import { buyTicket } from '../actions/buyTicket';
+import { throwError, causeErrorReset } from '../actions/throwError';
 
 class FilmContainer extends PureComponent {
   state = {
@@ -29,20 +30,20 @@ class FilmContainer extends PureComponent {
 
   buyTicket = () => {
     const {
-      userBalance, userID, setTicket, film,
+      userBalance,
+      userID,
+      setTicket,
+      film,
+      throwNewError,
+      causeReset,
     } = this.props;
 
     if (userBalance < film.ticketPrice) {
-      const alert = document.querySelector('.balance-error-alert');
-
-      alert.style.display = 'flex';
-      setTimeout(() => {
-        alert.style.display = 'none';
-      }, 3000);
-      return;
+      return throwNewError('Insufficient funds on balance!');
     }
 
     setTicket(`api/users/${userID}/change`, { buyTicket: film });
+    return causeReset();
   };
 
   render() {
@@ -69,6 +70,8 @@ FilmContainer.propTypes = {
     PropTypes.array,
   ]).isRequired,
   setTicket: PropTypes.func.isRequired,
+  throwNewError: PropTypes.func.isRequired,
+  causeReset: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -79,6 +82,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   setTicket: (url, body) => dispatch(buyTicket(url, body)),
+  throwNewError: errorText => dispatch(throwError(errorText)),
+  causeReset: () => dispatch(causeErrorReset()),
 });
 
 export default connect(
