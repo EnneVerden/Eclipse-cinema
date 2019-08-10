@@ -29,9 +29,10 @@ router.post("/films/add", async (req, res) => {
 
 router.put("/films/:filmId/change", async (req, res) => {
   try {
-    await Film.findByIdAndUpdate({ _id: req.params.filmId }, req.body);
+    await Film.updateOne({ _id: req.params.filmId }, req.body);
 
-    return res.status(200).send(req.body);
+    const film = await Film.findById({ _id: req.params.filmId });
+    return res.status(200).send(film);
   } catch (error) {
     console.log("Error: " + error);
     res.statusMessage = "Internal server error!";

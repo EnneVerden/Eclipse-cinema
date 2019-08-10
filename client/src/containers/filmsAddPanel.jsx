@@ -36,20 +36,61 @@ class FilmsAddPanelContainer extends PureComponent {
     } = this.state;
     const { addNewFilm } = this.props;
 
+    if (
+      poster === ''
+      || name === ''
+      || tags === ''
+      || description === ''
+      || startDate === ''
+      || endDate === ''
+      || ticketPrice === ''
+    ) {
+      return;
+    }
+
     addNewFilm('api/films/add', {
       poster,
       name,
       tags,
       description,
-      startDate,
-      endDate,
+      startDate: startDate.replace(/-/g, '.'),
+      endDate: endDate.replace(/-/g, '.'),
       ticketPrice,
+    });
+
+    this.setState({
+      poster: '',
+      name: '',
+      tags: '',
+      description: '',
+      startDate: '',
+      endDate: '',
+      ticketPrice: '',
     });
   };
 
   render() {
+    const {
+      poster,
+      name,
+      description,
+      tags,
+      startDate,
+      endDate,
+      ticketPrice,
+    } = this.state;
     return (
-      <FilmsAddPanel handeChange={this.handeChange} addFilm={this.addFilm} />
+      <FilmsAddPanel
+        handeChange={this.handeChange}
+        addFilm={this.addFilm}
+        poster={poster}
+        name={name}
+        tags={tags}
+        description={description}
+        startDate={startDate}
+        endDate={endDate}
+        ticketPrice={ticketPrice}
+      />
     );
   }
 }

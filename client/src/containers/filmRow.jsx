@@ -16,8 +16,15 @@ class FilmRowContainer extends PureComponent {
   };
 
   render() {
-    const { film } = this.props;
-    return <FilmRow film={film} deleteFilm={this.deleteFilm} />;
+    const { film, setModalInfo } = this.props;
+
+    return (
+      <FilmRow
+        film={film}
+        deleteFilm={this.deleteFilm}
+        setModalInfo={setModalInfo}
+      />
+    );
   }
 }
 
@@ -28,6 +35,7 @@ FilmRowContainer.propTypes = {
     PropTypes.number,
     PropTypes.object,
   ]).isRequired,
+  setModalInfo: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({

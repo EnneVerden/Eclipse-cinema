@@ -1,0 +1,16 @@
+.modal-edit {
+  font-family: "Gilroy", sans-serif;
+
+  &__inp {
+    margin: 7px 0;
+    background: none;
+    color: #d1d1d1;
+    letter-spacing: 1px;
+
+    &:focus {
+      color: #d1d1d1;
+      background: none;
+      letter-spacing: 1px;
+    }
+  }
+}

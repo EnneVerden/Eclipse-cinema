@@ -6,6 +6,7 @@ const FilmRow = ({
     name, poster, description, tags, startDate, endDate, ticketPrice,
   },
   deleteFilm,
+  setModalInfo,
 }) => (
   <tr>
     <td className="films__col__film-name">{name}</td>
@@ -19,14 +20,26 @@ const FilmRow = ({
     </td>
     <td className="films__col__film-price">{ticketPrice}$</td>
     <td>
-      <button
-        type="button"
-        className="btn films__btn_remove"
-        title="Remove"
-        onClick={deleteFilm}
-      >
-        <i className="far fa-trash-alt" />
-      </button>
+      <div className="films__col__film-btns">
+        <button
+          type="button"
+          className="btn films__btn"
+          title="Edit"
+          data-toggle="modal"
+          data-target="#modal"
+          onClick={setModalInfo}
+        >
+          <i className="far fa-edit" />
+        </button>
+        <button
+          type="button"
+          className="btn films__btn"
+          title="Remove"
+          onClick={deleteFilm}
+        >
+          <i className="far fa-trash-alt" />
+        </button>
+      </div>
     </td>
   </tr>
 );
@@ -38,6 +51,7 @@ FilmRow.propTypes = {
     PropTypes.object,
   ]).isRequired,
   deleteFilm: PropTypes.func.isRequired,
+  setModalInfo: PropTypes.func.isRequired,
 };
 
 export default FilmRow;

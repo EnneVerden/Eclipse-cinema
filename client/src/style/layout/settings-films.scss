@@ -17,7 +17,12 @@
     font-size: 30px;
   }
 
-  &__btn_remove {
+  &__col__film-btns {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  &__btn {
     padding: 3px 7px;
   }
 }
