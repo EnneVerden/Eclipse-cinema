@@ -19,11 +19,14 @@ export const userRevisit = () => async (dispatch) => {
           Revisit: `${token}`,
         },
       });
-      const data = await response.json();
 
-      if (data.message) {
+      if (response.status === 400) {
+        dispatch(throwError(response.statusText));
         return localStorage.removeItem('token');
       }
+
+      const data = await response.json();
+
       return dispatch(userRevisitSuccess(data));
     }
     return null;

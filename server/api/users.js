@@ -39,7 +39,7 @@ router.get("/users/getUser", async (req, res) => {
       const user = await User.findById(token);
 
       if (!user) {
-        res.statusMessage = "Invalid token!";
+        res.statusMessage = "Invalid session ID!";
         return res.status(400).end();
       }
 
