@@ -6,9 +6,9 @@ export const fetchUsersDataSuccess = users => ({
   users,
 });
 
-export const fetchUsersData = url => async (dispatch) => {
+export const fetchUsersData = () => async (dispatch) => {
   try {
-    const response = await fetch(url);
+    const response = await fetch('api/users/get');
     const users = await response.json();
 
     return dispatch(fetchUsersDataSuccess(users));

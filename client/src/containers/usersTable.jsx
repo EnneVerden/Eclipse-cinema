@@ -20,7 +20,7 @@ class UsersContainer extends PureComponent {
 
     usersData.forEach(item => (item.removeRequest ? usersArray.push(item._id) : null));
 
-    deleteAccounts('api/users/delete', { _id: usersArray });
+    deleteAccounts({ _id: usersArray });
   };
 
   render() {
@@ -43,7 +43,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getUsersData: url => dispatch(fetchUsersData(url)),
-  deleteAccounts: (url, body) => dispatch(deleteUsers(url, body)),
+  deleteAccounts: body => dispatch(deleteUsers(body)),
 });
 
 export default connect(

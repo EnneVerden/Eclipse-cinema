@@ -9,7 +9,7 @@ class TicketRowContainer extends PureComponent {
   deleteTicket = () => {
     const { userID, filmID, removeTicket } = this.props;
 
-    removeTicket(`api/users/${userID}/change`, { deletedTicket: filmID });
+    removeTicket(userID, { deletedTicket: filmID });
   };
 
   render() {
@@ -31,7 +31,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  removeTicket: (url, body) => dispatch(deleteTicket(url, body)),
+  removeTicket: (userID, body) => dispatch(deleteTicket(userID, body)),
 });
 
 export default connect(

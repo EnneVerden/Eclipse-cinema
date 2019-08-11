@@ -1,14 +1,14 @@
-import { SEND_USER_DATA_SUCCESS } from '../actionTypes';
+import { FETCH_USER_DATA_SUCCESS } from '../actionTypes';
 import { throwError } from './throwError';
 
 export const sendUserDataSuccess = user => ({
-  type: SEND_USER_DATA_SUCCESS,
+  type: FETCH_USER_DATA_SUCCESS,
   user,
 });
 
-export const sendUserData = (url, body) => async (dispatch) => {
+export const sendUserData = body => async (dispatch) => {
   try {
-    const response = await fetch(url, {
+    const response = await fetch('api/users/addUser', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(body),
@@ -19,6 +19,7 @@ export const sendUserData = (url, body) => async (dispatch) => {
     }
 
     const user = await response.json();
+    localStorage.setItem('token', user._id);
     return dispatch(sendUserDataSuccess(user));
   } catch (error) {
     switch (error.message) {

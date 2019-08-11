@@ -6,9 +6,9 @@ export const deleteFilmSuccess = deletedFilmID => ({
   deletedFilmID,
 });
 
-export const deleteFilm = url => async (dispatch) => {
+export const deleteFilm = filmID => async (dispatch) => {
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`api/films/${filmID}/delete`, {
       method: 'DELETE',
       headers: { 'Content-type': 'application/json' },
     });

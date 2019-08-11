@@ -6,9 +6,9 @@ export const sendRemoveRequestSuccess = newUserData => ({
   newUserData,
 });
 
-export const sendRemoveRequest = (url, body) => async (dispatch) => {
+export const sendRemoveRequest = (userID, body) => async (dispatch) => {
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`api/users/${userID}/change`, {
       method: 'PUT',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(body),

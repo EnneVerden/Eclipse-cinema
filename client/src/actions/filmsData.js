@@ -6,9 +6,9 @@ export const fetchFilmsDataSuccess = films => ({
   films,
 });
 
-export const fetchFilmsData = url => async (dispatch) => {
+export const fetchFilmsData = () => async (dispatch) => {
   try {
-    const response = await fetch(url);
+    const response = await fetch('/api/films/get');
     const films = await response.json();
 
     return dispatch(fetchFilmsDataSuccess(films));

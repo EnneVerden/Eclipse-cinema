@@ -6,9 +6,9 @@ export const deleteTicketSuccess = deletedTicketID => ({
   deletedTicketID,
 });
 
-export const deleteTicket = (url, body) => async (dispatch) => {
+export const deleteTicket = (userID, body) => async (dispatch) => {
   try {
-    const response = await fetch(url, {
+    const response = await fetch(`api/users/${userID}/change`, {
       method: 'PUT',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(body),

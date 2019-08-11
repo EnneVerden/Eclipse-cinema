@@ -6,15 +6,24 @@ export const fetchUserDataSuccess = user => ({
   user,
 });
 
-export const fetchUserData = url => async (dispatch) => {
+export const fetchUserData = (email, password) => async (dispatch) => {
   try {
-    const response = await fetch(url);
+    const response = await fetch('api/users/getUser', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json',
+        Accept: 'application/json',
+        email,
+        password,
+      },
+    });
 
     if (response.status === 400) {
       return dispatch(throwError(response.statusText));
     }
 
     const user = await response.json();
+    localStorage.setItem('token', user._id);
     return dispatch(fetchUserDataSuccess(user));
   } catch (error) {
     switch (error.message) {

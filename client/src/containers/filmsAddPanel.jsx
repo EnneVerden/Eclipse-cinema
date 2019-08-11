@@ -48,7 +48,7 @@ class FilmsAddPanelContainer extends PureComponent {
       return;
     }
 
-    addNewFilm('api/films/add', {
+    addNewFilm({
       poster,
       name,
       tags,
@@ -100,7 +100,7 @@ FilmsAddPanelContainer.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  addNewFilm: (url, body) => dispatch(addFilm(url, body)),
+  addNewFilm: body => dispatch(addFilm(body)),
 });
 
 export default connect(

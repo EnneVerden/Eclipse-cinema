@@ -34,7 +34,7 @@ class SignUpContainer extends PureComponent {
       return;
     }
 
-    postUserData('api/users/addUser', {
+    postUserData({
       email,
       fullName,
       password,
@@ -57,7 +57,7 @@ SignUpContainer.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  postUserData: (url, body) => dispatch(sendUserData(url, body)),
+  postUserData: body => dispatch(sendUserData(body)),
   throwAuthErr: errorText => dispatch(throwError(errorText)),
 });
 

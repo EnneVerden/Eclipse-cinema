@@ -6,9 +6,9 @@ export const deleteUsersSuccess = users => ({
   users,
 });
 
-export const deleteUsers = (url, body) => async (dispatch) => {
+export const deleteUsers = body => async (dispatch) => {
   try {
-    const response = await fetch(url, {
+    const response = await fetch('api/users/delete', {
       method: 'DELETE',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(body),

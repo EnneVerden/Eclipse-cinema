@@ -33,9 +33,22 @@ router.delete("/users/delete", async (req, res) => {
 
 router.get("/users/getUser", async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.query.email });
+    const token = req.header("Revisit");
 
-    if (!user || !bcrypt.compareSync(req.query.password, user.password)) {
+    if (token) {
+      const user = await User.findById(token);
+
+      if (!user) {
+        res.statusMessage = "Invalid token!";
+        return res.status(400).end();
+      }
+
+      return res.status(200).send(user);
+    }
+
+    const user = await User.findOne({ email: req.header("email") });
+
+    if (!user || !bcrypt.compareSync(req.header("password"), user.password)) {
       res.statusMessage = "Invalid email or password!";
       return res.status(400).end();
     }
@@ -50,7 +63,7 @@ router.get("/users/getUser", async (req, res) => {
 
 router.post("/users/addUser", async (req, res) => {
   try {
-    const user = await User.findOne({ email: req.body.email });
+    let user = await User.findOne({ email: req.body.email });
 
     if (user) {
       res.statusMessage = "User with this email already exists!";

@@ -44,7 +44,7 @@ class EditFilmContainer extends PureComponent {
     } = this.state;
     const { modalContent, changeFilmInfo } = this.props;
 
-    changeFilmInfo(`api/films/${modalContent._id}/change`, {
+    changeFilmInfo(modalContent._id, {
       poster,
       name,
       tags,
@@ -100,7 +100,7 @@ EditFilmContainer.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  changeFilmInfo: (url, body) => dispatch(changeFilm(url, body)),
+  changeFilmInfo: (filmID, body) => dispatch(changeFilm(filmID, body)),
 });
 
 export default connect(

@@ -9,7 +9,7 @@ class FilmsGridContainer extends PureComponent {
   componentDidMount = () => {
     const { getFilmsData } = this.props;
 
-    getFilmsData('/api/films/get');
+    getFilmsData();
   };
 
   render() {
@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getFilmsData: url => dispatch(fetchFilmsData(url)),
+  getFilmsData: () => dispatch(fetchFilmsData()),
 });
 
 export default connect(

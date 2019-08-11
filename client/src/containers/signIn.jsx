@@ -24,11 +24,7 @@ class SignInContainer extends PureComponent {
     const { getUserData } = this.props;
 
     if (!email || !password) return;
-    getUserData(
-      `api/users/getUser/?email=${encodeURIComponent(
-        email,
-      )}&password=${encodeURIComponent(password)}`,
-    );
+    getUserData(email, password);
   };
 
   render() {
@@ -46,7 +42,7 @@ SignInContainer.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  getUserData: url => dispatch(fetchUserData(url)),
+  getUserData: (email, password) => dispatch(fetchUserData(email, password)),
 });
 
 export default connect(

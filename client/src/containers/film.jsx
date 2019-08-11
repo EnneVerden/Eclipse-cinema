@@ -42,7 +42,7 @@ class FilmContainer extends PureComponent {
       return throwNewError('Insufficient funds on balance!');
     }
 
-    setTicket(`api/users/${userID}/change`, { buyTicket: film });
+    setTicket(userID, { buyTicket: film });
     return causeReset();
   };
 
@@ -81,7 +81,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  setTicket: (url, body) => dispatch(buyTicket(url, body)),
+  setTicket: (userID, body) => dispatch(buyTicket(userID, body)),
   throwNewError: errorText => dispatch(throwError(errorText)),
   causeReset: () => dispatch(causeErrorReset()),
 });

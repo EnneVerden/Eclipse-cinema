@@ -22,7 +22,7 @@ class ProfileContainer extends PureComponent {
       removeBtn.classList.add('activated-remove');
       removeBtn.textContent = 'Cancel removing';
     }
-  }
+  };
 
   componentDidUpdate = (prevProps) => {
     const { removeRequest } = this.props;
@@ -37,7 +37,7 @@ class ProfileContainer extends PureComponent {
         removeBtn.textContent = 'Remove account';
       }
     }
-  }
+  };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -59,14 +59,14 @@ class ProfileContainer extends PureComponent {
       newData = { fullName, password: newPassword };
     }
 
-    changeData(`api/users/${_id}/change`, newData);
+    changeData(_id, newData);
   };
 
   removeAccount = () => {
     const { _id, removeRequest, sendRequest } = this.props;
     const request = !removeRequest;
 
-    sendRequest(`api/users/${_id}/change`, { removeRequest: request });
+    sendRequest(_id, { removeRequest: request });
   };
 
   render() {
@@ -105,8 +105,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  changeData: (url, body) => dispatch(changeUserData(url, body)),
-  sendRequest: (url, body) => dispatch(sendRemoveRequest(url, body)),
+  changeData: (userID, body) => dispatch(changeUserData(userID, body)),
+  sendRequest: (userID, body) => dispatch(sendRemoveRequest(userID, body)),
 });
 
 export default connect(

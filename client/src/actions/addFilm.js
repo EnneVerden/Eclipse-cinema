@@ -6,9 +6,9 @@ export const addFilmSuccess = film => ({
   film,
 });
 
-export const addFilm = (url, body) => async (dispatch) => {
+export const addFilm = body => async (dispatch) => {
   try {
-    const response = await fetch(url, {
+    const response = await fetch('api/films/add', {
       method: 'POST',
       headers: { 'Content-type': 'application/json' },
       body: JSON.stringify(body),

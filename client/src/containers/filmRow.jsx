@@ -12,7 +12,7 @@ class FilmRowContainer extends PureComponent {
       film: { _id },
     } = this.props;
 
-    removeFilm(`api/films/${_id}/delete`);
+    removeFilm(_id);
   };
 
   render() {
@@ -39,7 +39,7 @@ FilmRowContainer.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  removeFilm: url => dispatch(deleteFilm(url)),
+  removeFilm: filmID => dispatch(deleteFilm(filmID)),
 });
 
 export default connect(

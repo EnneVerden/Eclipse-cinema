@@ -1,6 +1,5 @@
 import {
   FETCH_USER_DATA_SUCCESS,
-  SEND_USER_DATA_SUCCESS,
   CHANGE_USER_DATA_SUCCESS,
   SEND_REMOVE_REQUEST_SUCCESS,
   DELETE_TICKET_SUCCESS,
@@ -13,8 +12,6 @@ const initialState = {};
 const userData = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_USER_DATA_SUCCESS:
-      return action.user;
-    case SEND_USER_DATA_SUCCESS:
       return action.user;
     case CHANGE_USER_DATA_SUCCESS:
       return {
