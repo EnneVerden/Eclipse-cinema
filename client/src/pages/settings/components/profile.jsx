@@ -54,7 +54,7 @@ const Profile = ({
             <input
               type="password"
               className="form-control profile__inp"
-              name="oldPassword"
+              name="currentPassword"
               placeholder="Current password"
               onChange={handleChange}
             />

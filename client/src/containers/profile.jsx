@@ -48,15 +48,15 @@ class ProfileContainer extends PureComponent {
   };
 
   changeUserData = () => {
-    const { fullName, newPassword } = this.state;
+    const { fullName, newPassword, currentPassword } = this.state;
     const { _id, changeData } = this.props;
     let newData = {};
 
     if (fullName === '' && newPassword === '') return;
-    if (fullName !== '') newData = { fullName };
-    if (newPassword !== '') newData = { password: newPassword };
+    if (fullName !== '') newData = { fullName, oldPassword: currentPassword };
+    if (newPassword !== '') newData = { password: newPassword, oldPassword: currentPassword };
     if (fullName !== '' && newPassword !== '') {
-      newData = { fullName, password: newPassword };
+      newData = { fullName, password: newPassword, oldPassword: currentPassword };
     }
 
     changeData(_id, newData);

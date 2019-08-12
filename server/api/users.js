@@ -128,18 +128,32 @@ router.put("/users/:userId/change", async (req, res) => {
       return res.status(200).send(req.body);
     }
 
-    if (req.body.password) {
-      req.body.password = bcrypt.hashSync(req.body.password, 10);
+    if (req.body.oldPassword || req.body.oldPassword === "") {
+      const oldPassword = req.body.oldPassword;
+      const myPassword = await User.findById(req.params.userId, {
+        _id: 0,
+        password: 1
+      });
+
+      if (!bcrypt.compareSync(oldPassword, myPassword.password)) {
+        res.statusMessage = "Invalid current password!";
+        return res.status(400).send();
+      }
+
+      if (req.body.password) {
+        req.body.password = bcrypt.hashSync(req.body.password, 10);
+      }
+
+      await User.updateOne({ _id: req.params.userId }, req.body);
+
+      const user = await User.findById(req.params.userId, {
+        fullName: 1,
+        password: 1,
+        removeRequest: 1
+      });
+
+      return res.status(200).send(user);
     }
-
-    await User.updateOne({ _id: req.params.userId }, req.body);
-
-    const user = await User.findById(
-      { _id: req.params.userId },
-      { fullName: 1, password: 1, removeRequest: 1 }
-    );
-
-    return res.status(200).send(user);
   } catch (error) {
     console.log("Error: " + error);
     res.statusMessage = "Internal server error!";

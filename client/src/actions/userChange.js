@@ -14,6 +14,10 @@ export const changeUserData = (userID, body) => async (dispatch) => {
       body: JSON.stringify(body),
     });
 
+    if (response.status === 400) {
+      return dispatch(throwError(response.statusText));
+    }
+
     const newUserData = await response.json();
     return dispatch(changeUserDataSuccess(newUserData));
   } catch (error) {
