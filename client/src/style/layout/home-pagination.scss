@@ -20,11 +20,9 @@
     width: 30px;
     margin: 0 8px;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     color: #d1d1d1;
     font-size: 20px;
+    text-align: center;
     transition: background-color 0.3s;
 
     &:hover {
@@ -52,31 +50,23 @@
   }
 }
 
-@media all and (max-width: 768px) {
-  .pagination {
-    &__block {
-      width: 90%;
-    }
-  }
-}
-
 @media all and (max-width: 420px) {
   .pagination {
     &__block {
       width: 90%;
+      justify-content: end;
     }
 
     &__link {
       width: auto;
-      font-size: 20px;
+      font-size: 22px;
+      margin: 0;
+      width: 10%;
+      border-radius: 0;
 
       &:hover {
         background: none;
       }
     }
-  }
-
-  .page_active {
-    background: none;
   }
 }

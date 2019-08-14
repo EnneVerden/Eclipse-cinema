@@ -120,7 +120,7 @@
   }
 }
 
-@media all and (max-width: 850px) {
+@media all and (max-width: 900px) {
   .title__search__result {
     width: 100%;
     flex-direction: column;
@@ -141,6 +141,16 @@
 
     &__btn {
       padding: 7px 25px;
+    }
+  }
+}
+
+@media all and (max-width: 420px) {
+  .title__search__result {
+    padding-top: 50px;
+
+    &__btn-close {
+      font-size: 20px;
     }
   }
 }
