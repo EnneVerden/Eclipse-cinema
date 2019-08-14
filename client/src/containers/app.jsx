@@ -6,15 +6,31 @@ import App from '../pages/app/app';
 import { userRevisit } from '../actions/userRevisit';
 
 class AppContainer extends PureComponent {
+  state = {
+    isLoading: false,
+  };
+
   componentDidMount = () => {
     const { getUserData } = this.props;
 
-    getUserData();
+    if (localStorage.getItem('token')) {
+      return getUserData();
+    }
+    return this.setState({ isLoading: true });
+  };
+
+  componentDidUpdate = (prevProps) => {
+    const { email } = this.props;
+
+    if (email !== prevProps.email) {
+      this.setState({ isLoading: true });
+    }
   };
 
   render() {
+    const { isLoading } = this.state;
     const { email } = this.props;
-    return <App email={email} />;
+    return <App isLoading={isLoading} email={email} />;
   }
 }
 

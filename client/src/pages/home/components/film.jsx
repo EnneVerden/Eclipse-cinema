@@ -5,7 +5,7 @@ const Film = ({
   film: {
     poster, name, tags, description, ticketPrice, startDate, endDate,
   },
-  disableBtn,
+  disabledBtn,
   buyTicket,
 }) => (
   <div className="films-grid__film">
@@ -25,12 +25,12 @@ const Film = ({
           <button
             type="button"
             className={`btn films-grid__btn ${
-              disableBtn ? 'films-grid__btn_purchased' : null
+              disabledBtn ? 'films-grid__btn_purchased' : null
             }`}
             onClick={buyTicket}
-            disabled={disableBtn}
+            disabled={disabledBtn}
           >
-            {disableBtn ? (
+            {disabledBtn ? (
               <i className="fas fa-check" />
             ) : (
               <i className="fas fa-shopping-cart" />
@@ -48,7 +48,7 @@ Film.propTypes = {
     PropTypes.number,
     PropTypes.object,
   ]).isRequired,
-  disableBtn: PropTypes.bool.isRequired,
+  disabledBtn: PropTypes.bool.isRequired,
   buyTicket: PropTypes.func.isRequired,
 };
 

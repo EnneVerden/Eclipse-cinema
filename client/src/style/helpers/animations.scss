@@ -34,6 +34,44 @@
   }
 }
 
+@media all and (max-width: 900px) {
+  @keyframes slideDown {
+    0% {
+      transform: translateY(-5%);
+    }
+    100% {
+      transform: translateY(0%);
+    }
+  }
+
+  @-webkit-keyframes slideDown {
+    0% {
+      -webkit-transform: translateY(-5%);
+    }
+    100% {
+      -webkit-transform: translateY(0%);
+    }
+  }
+
+  @keyframes slideUp {
+    0% {
+      transform: translateY(0%);
+    }
+    100% {
+      transform: translateY(-5%);
+    }
+  }
+
+  @-webkit-keyframes slideUp {
+    0% {
+      -webkit-transform: translateY(0%);
+    }
+    100% {
+      -webkit-transform: translateY(-5%);
+    }
+  }
+}
+
 @media all and (max-width: 420px) {
   @keyframes slideDown {
     0% {

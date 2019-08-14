@@ -1,20 +1,18 @@
-import { FETCH_USER_DATA_SUCCESS } from '../actionTypes';
+import { FETCH_DESIRED_FILM } from '../actionTypes';
 import { throwError } from './throwError';
 
-export const fetchUserDataSuccess = user => ({
-  type: FETCH_USER_DATA_SUCCESS,
-  user,
+export const getDesiredFilmSuccess = film => ({
+  type: FETCH_DESIRED_FILM,
+  film,
 });
 
-export const fetchUserData = (email, password) => async (dispatch) => {
+export const getDesiredFilm = filmName => async (dispatch) => {
   try {
-    const response = await fetch('api/users/get', {
+    const response = await fetch('api/films/get', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
-        Accept: 'application/json',
-        email,
-        password,
+        'Film-name': filmName,
       },
     });
 
@@ -22,9 +20,8 @@ export const fetchUserData = (email, password) => async (dispatch) => {
       return dispatch(throwError(response.statusText));
     }
 
-    const user = await response.json();
-    localStorage.setItem('token', user._id);
-    return dispatch(fetchUserDataSuccess(user));
+    const film = await response.json();
+    return dispatch(getDesiredFilmSuccess(film));
   } catch (error) {
     switch (error.message) {
       case 'Failed to fetch':

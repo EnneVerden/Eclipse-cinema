@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 const SignIn = ({ handleChange, authorization }) => (
   <form
-    action="#"
     className="auth__forms__form tab-pane fade show active"
     id="sign-in"
     onSubmit={(event) => {

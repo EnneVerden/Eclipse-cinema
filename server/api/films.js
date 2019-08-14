@@ -4,6 +4,20 @@ const Film = require("../models/filmModel");
 
 router.get("/films/get", async (req, res) => {
   try {
+    if (req.header("Film-name")) {
+      const filmName = req.header("Film-name").toLowerCase();
+      const film = await Film.findOne({
+        $or: [{ name: { $regex: filmName, $options: "i" } }]
+      });
+
+      if (!film) {
+        res.statusMessage = "Movies not found!";
+        return res.status(400).end();
+      }
+
+      return res.status(200).send(film);
+    }
+
     const films = await Film.find({});
 
     return res.status(200).send(films);

@@ -40,8 +40,10 @@
 
 @media all and (max-width: 420px) {
   .error-alert {
+    width: 90%;
+    left: 5%;
+
     &__info {
-      width: 90%;
       text-align: center;
       padding-left: 3rem;
     }

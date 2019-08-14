@@ -1,25 +1,13 @@
-.films-grid {
-  background: #2f2f35;
-  font-family: "Gilroy", sans-serif;
-
-  &__grid {
-    width: 1200px;
-    margin: 0 auto;
-    padding-top: 20px;
-  }
-
-  &__row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-
-  &__film {
-    width: 48%;
-    padding: 30px 0;
-    display: flex;
-    justify-content: space-between;
-  }
+.title__search__result {
+  position: absolute;
+  left: 0;
+  top: 60px;
+  background: #26262b;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 100;
+  display: none;
 
   &__img-block {
     display: flex;
@@ -79,37 +67,46 @@
   &__date {
     color: #d1d1d1;
     letter-spacing: 1px;
+    font-size: 14px;
   }
 
-  &__btn {
+  &__btn-buy {
     padding: 10px 35px;
     background: linear-gradient(to right, #d6538e, #de5059);
   }
+
+  &__btn-close {
+    position: absolute;
+    top: 5px;
+    right: 0;
+  }
 }
 
-.films-grid__btn_purchased {
+.title__search__result__btn-buy_purchased {
   background: #2ecc71;
   box-shadow: 0 0 3px 2px #28282b;
 }
 
+.title__search__result_active {
+  display: flex;
+}
+
 @media all and (max-width: 1024px) {
-  .films-grid {
-    &__grid {
-      width: 90%;
+  .title__search__result {
+    &__title {
+      font-size: 22px;
     }
 
-    &__film {
-      width: 30%;
-      flex-direction: column;
+    &__categories {
+      font-size: 12px;
     }
 
-    &__info-block {
-      padding-top: 10px;
-      padding-left: 0;
+    &__description {
+      font-size: 14px;
     }
 
     &__price {
-      font-size: 34px;
+      font-size: 30px;
     }
 
     &__date {
@@ -117,51 +114,16 @@
     }
 
     &__btn {
-      padding: 7px 20px;
+      padding: 5px 20px;
     }
   }
 }
 
 @media all and (max-width: 850px) {
-  .films-grid {
-    &__grid {
-      width: 90%;
-    }
-
-    &__film {
-      width: 100%;
-      flex-direction: row;
-    }
-
-    &__info-block {
-      padding: 0;
-      padding-left: 15px;
-    }
-
-    &__price {
-      font-size: 44px;
-    }
-
-    &__date {
-      font-size: 16px;
-    }
-
-    &__btn {
-      padding: 10px 35px;
-    }
-  }
-}
-
-@media all and (max-width: 420px) {
-  .films-grid {
-    &__grid {
-      width: 90%;
-    }
-
-    &__film {
-      width: 100%;
-      flex-direction: column;
-    }
+  .title__search__result {
+    width: 100%;
+    flex-direction: column;
+    top: 53px;
 
     &__info-block {
       padding: 0;

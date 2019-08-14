@@ -6,10 +6,11 @@ import Auth from '../auth/auth';
 import Home from '../home/home';
 import Settings from '../../containers/settings';
 import ProtectedRoute from '../../shared/protectComponent/ProtectedRoute';
+import Preloader from '../../shared/preloader/Preloader';
 
-const App = ({ email }) => (
-  <Router>
-    <div>
+const App = ({ isLoading, email }) => (
+  isLoading ? (
+    <Router>
       <ProtectedRoute
         exact
         path="/"
@@ -18,23 +19,21 @@ const App = ({ email }) => (
         redirect
         component={Auth}
       />
-      <ProtectedRoute
-        exact
-        path="/home"
-        protectField={email}
-        component={Home}
-      />
+      <ProtectedRoute exact path="/home" protectField={email} component={Home} />
       <ProtectedRoute
         exact
         path="/settings"
         protectField={email}
         component={Settings}
       />
-    </div>
-  </Router>
+    </Router>
+  ) : (
+    <Preloader />
+  )
 );
 
 App.propTypes = {
+  isLoading: PropTypes.bool.isRequired,
   email: PropTypes.string,
 };
 

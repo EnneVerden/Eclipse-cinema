@@ -8,12 +8,18 @@ import { throwError, causeErrorReset } from '../actions/throwError';
 
 class FilmContainer extends PureComponent {
   state = {
-    disableBtn: false,
+    disabledBtn: false,
   };
 
   componentDidMount = () => this.disableButton();
 
-  componentDidUpdate = () => this.disableButton();
+  componentDidUpdate = (prevProps) => {
+    const { userTickets } = this.props;
+
+    if (userTickets !== prevProps.userTickets) {
+      this.disableButton();
+    }
+  };
 
   disableButton = () => {
     const {
@@ -23,7 +29,7 @@ class FilmContainer extends PureComponent {
 
     userTickets.forEach((item) => {
       if (item._id === _id) {
-        this.setState({ disableBtn: true });
+        this.setState({ disabledBtn: true });
       }
     });
   };
@@ -48,10 +54,10 @@ class FilmContainer extends PureComponent {
 
   render() {
     const { film } = this.props;
-    const { disableBtn } = this.state;
+    const { disabledBtn } = this.state;
 
     return (
-      <Film film={film} buyTicket={this.buyTicket} disableBtn={disableBtn} />
+      <Film film={film} buyTicket={this.buyTicket} disabledBtn={disabledBtn} />
     );
   }
 }

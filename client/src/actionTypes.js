@@ -26,6 +26,8 @@ export const ADD_FILM_SUCCESS = 'ADD_FILM_SUCCESS';
 
 export const CHANGE_FILM_DATA_SUCCESS = 'CHANGE_FILM_DATA_SUCCESS';
 
+export const FETCH_DESIRED_FILM = 'FETCH_DESIRED_FILM';
+
 export const DELETE_FILM_SUCCESS = 'REMOVE_FILM_SUCCESS';
 
 // Other action-types

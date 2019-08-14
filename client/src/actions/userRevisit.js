@@ -11,7 +11,7 @@ export const userRevisit = () => async (dispatch) => {
     const { token } = localStorage;
 
     if (token) {
-      const response = await fetch('api/users/getUser', {
+      const response = await fetch('api/users/get', {
         method: 'GET',
         headers: {
           'Content-type': 'application/json',

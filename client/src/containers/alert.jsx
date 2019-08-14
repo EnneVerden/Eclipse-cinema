@@ -15,7 +15,9 @@ class ErrorAlertContainer extends PureComponent {
       const alert = document.querySelector('.error-alert');
 
       alert.style.display = 'flex';
-      alert.style.marginLeft = `-${alert.offsetWidth / 2}px`;
+      if (!/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        alert.style.marginLeft = `-${alert.clientWidth / 2}px`;
+      }
       clearTimeout(this.timeoutNumber);
       this.timeoutNumber = setTimeout(() => {
         alert.style.display = 'none';

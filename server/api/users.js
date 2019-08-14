@@ -6,6 +6,28 @@ const User = require("../models/userModel");
 
 router.get("/users/get", async (req, res) => {
   try {
+    if (req.header("Revisit")) {
+      const user = await User.findById(req.header("Revisit"));
+
+      if (!user) {
+        res.statusMessage = "Invalid session ID!";
+        return res.status(400).end();
+      }
+
+      return res.status(200).send(user);
+    }
+
+    if (req.header("email")) {
+      const user = await User.findOne({ email: req.header("email") });
+
+      if (!user || !bcrypt.compareSync(req.header("password"), user.password)) {
+        res.statusMessage = "Invalid email or password!";
+        return res.status(400).end();
+      }
+
+      return res.status(200).send(user);
+    }
+
     const users = await User.find(
       {},
       { avatar: 1, fullName: 1, email: 1, status: 1, removeRequest: 1 }
@@ -24,36 +46,6 @@ router.delete("/users/delete", async (req, res) => {
     await User.deleteMany({ _id: req.body._id });
 
     return res.status(200).send(req.body);
-  } catch (error) {
-    console.log("Error: " + error);
-    res.statusMessage = "Internal server error!";
-    return res.status(500).end();
-  }
-});
-
-router.get("/users/getUser", async (req, res) => {
-  try {
-    const token = req.header("Revisit");
-
-    if (token) {
-      const user = await User.findById(token);
-
-      if (!user) {
-        res.statusMessage = "Invalid session ID!";
-        return res.status(400).end();
-      }
-
-      return res.status(200).send(user);
-    }
-
-    const user = await User.findOne({ email: req.header("email") });
-
-    if (!user || !bcrypt.compareSync(req.header("password"), user.password)) {
-      res.statusMessage = "Invalid email or password!";
-      return res.status(400).end();
-    }
-
-    return res.status(200).send(user);
   } catch (error) {
     console.log("Error: " + error);
     res.statusMessage = "Internal server error!";
