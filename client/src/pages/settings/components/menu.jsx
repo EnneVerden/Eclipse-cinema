@@ -9,6 +9,9 @@ const Menu = ({ status }) => (
   <section className="menu">
     <div className="menu__block">
       <nav className="menu__list nav">
+        <Link to="/home" className="menu__item menu__home_mobile">
+          <i className="fas fa-home" />
+        </Link>
         <ProtectedComponent
           protectField={status}
           component={MenuItem}
@@ -21,7 +24,7 @@ const Menu = ({ status }) => (
           anchor="#films"
           itemName="Films"
         />
-        <Link to="/home" className="menu__item">
+        <Link to="/home" className="menu__item menu__home">
           <i className="fas fa-home" />
         </Link>
         <ProtectedComponent

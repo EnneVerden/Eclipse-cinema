@@ -18,8 +18,8 @@ const Users = ({ usersData, removeUsers }) => {
   );
 
   return (
-    <section className="users tab-pane fade" id="users">
-      <div className="users__block">
+    <section className="table-section tab-pane fade" id="users">
+      <div className="table-block users__block">
         <button
           type="button"
           className="btn users__phone-btn_remove"
@@ -29,7 +29,7 @@ const Users = ({ usersData, removeUsers }) => {
           <i className="fas fa-user-times" />
         </button>
         <table className="table">
-          <thead className="users__thead">
+          <thead>
             <tr>
               <th>avatar</th>
               <th>full name</th>

@@ -1,30 +1,25 @@
-import { FETCH_USER_DATA_SUCCESS } from '../actionTypes';
+import { FETCH_ORDERS_SUCCESS } from '../actionTypes';
 import { throwError } from './throwError';
 
-export const fetchUserDataSuccess = user => ({
-  type: FETCH_USER_DATA_SUCCESS,
-  user,
+export const fetchOrdersSuccess = orders => ({
+  type: FETCH_ORDERS_SUCCESS,
+  orders,
 });
 
-export const fetchUserData = (email, password) => async (dispatch) => {
+export const fetchOrders = () => async (dispatch) => {
   try {
     const response = await fetch('api/users/get', {
       method: 'GET',
       headers: {
         'Content-type': 'application/json',
         Accept: 'application/json',
-        Email: email,
-        Password: password,
+        Orders: true,
       },
     });
 
-    if (response.status === 400) {
-      return dispatch(throwError(response.statusText));
-    }
+    const data = await response.json();
 
-    const user = await response.json();
-    localStorage.setItem('token', user._id);
-    return dispatch(fetchUserDataSuccess(user));
+    return dispatch(fetchOrdersSuccess(data));
   } catch (error) {
     switch (error.message) {
       case 'Failed to fetch':

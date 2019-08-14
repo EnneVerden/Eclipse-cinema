@@ -1,0 +1,15 @@
+@media (min-width: 421px) and (max-width: 900px) {
+  .orders {
+    &__block {
+      padding-top: 50px;
+    }
+  }
+}
+
+@media (max-width: 420px) {
+  .orders {
+    &__block {
+      padding-top: 30px;
+    }
+  }
+}

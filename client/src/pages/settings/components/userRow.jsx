@@ -6,12 +6,12 @@ const UserRow = ({
 }) => (
   <tr>
     <td>
-      <img src={avatar} alt="Avatar" className="users__avatar" />
+      <img src={avatar} alt="Avatar" className="table__avatar" />
     </td>
-    <td className="users__col__user-name">{fullName}</td>
-    <td className="users__col__user-email">{email}</td>
-    <td className="users__col__user-status">{status}</td>
-    <td className="users__col__user-request">{String(removeRequest)}</td>
+    <td className="table__text">{fullName}</td>
+    <td className="table__text">{email}</td>
+    <td className="table__text">{status}</td>
+    <td className="table__text">{String(removeRequest)}</td>
   </tr>
 );
 

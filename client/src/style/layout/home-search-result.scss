@@ -22,6 +22,7 @@
 
   &__info-block {
     padding-left: 20px;
+    padding-right: 10px;
     display: flex;
     flex-direction: column;
     flex: 2;
@@ -29,7 +30,7 @@
 
   &__title {
     color: #fff;
-    font-size: 24px;
+    font-size: 22px;
     letter-spacing: 1px;
   }
 
@@ -60,7 +61,7 @@
 
   &__price {
     color: #de5059;
-    font-size: 44px;
+    font-size: 38px;
     letter-spacing: 3px;
   }
 
@@ -71,7 +72,7 @@
   }
 
   &__btn-buy {
-    padding: 10px 35px;
+    padding: 7px 30px;
     background: linear-gradient(to right, #d6538e, #de5059);
   }
 

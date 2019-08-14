@@ -1,16 +1,6 @@
 .films {
-  background: #28282b;
-  font-family: "Gilroy", sans-serif;
-
   &__block {
-    width: 90%;
-    margin: 0 auto;
     padding-top: 50px;
-    padding-bottom: 30px;
-  }
-
-  &__poster {
-    width: 100px;
   }
 
   &__col__film-price {
@@ -28,6 +18,42 @@
 }
 
 @media all and (max-width: 900px) {
+  .films-table {
+    & thead {
+      display: none;
+    }
+
+    & tr {
+      display: block;
+      margin: 50px 0;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        height: 3px;
+        width: 100%;
+        background: linear-gradient(to right, #d6538e, #de5059);
+      }
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
+    & tbody td {
+      display: block;
+      text-align: center;
+      border: none;
+      border-bottom: 1px solid #424244;
+    }
+  }
+
   .films {
     &__block {
       padding-top: 30px;
@@ -59,10 +85,6 @@
 
 @media all and (max-width: 420px) {
   .films {
-    &__block {
-      padding-top: 30px;
-    }
-
     &__col__film-name {
       font-size: 26px;
     }

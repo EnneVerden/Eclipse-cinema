@@ -11,7 +11,7 @@ const FilmRow = ({
   <tr>
     <td className="films__col__film-name">{name}</td>
     <td>
-      <img src={poster} alt="Poster" className="films__poster" />
+      <img src={poster} alt="Poster" className="table__poster" />
     </td>
     <td className="films__col__film-desc">{description}</td>
     <td className="films__col__film-tags">{tags}</td>

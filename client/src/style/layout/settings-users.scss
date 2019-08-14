@@ -1,20 +1,4 @@
 .users {
-  background: #28282b;
-  font-family: "Gilroy", sans-serif;
-
-  &__block {
-    width: 90%;
-    margin: 0 auto;
-    padding-top: 70px;
-    padding-bottom: 30px;
-  }
-
-  &__avatar {
-    width: 50px;
-    background: #fff;
-    border-radius: 50%;
-  }
-
   &__remove {
     display: flex;
     align-items: center;
@@ -57,15 +41,8 @@
       }
     }
 
-    &__avatar {
-      width: 110px;
-    }
-
-    &__col__user-name,
-    &__col__user-email,
-    &__col__user-status,
-    &__col__user-request {
-      font-size: 26px;
+    &__btn_remove {
+      display: none;
     }
   }
 }
@@ -88,20 +65,8 @@
       }
     }
 
-    &__avatar {
-      width: 80px;
-    }
-
-    &__col__user-name,
-    &__col__user-email,
-    &__col__user-status,
-    &__col__user-request {
-      font-size: 20px;
-    }
-
     &__btn_remove {
-      top: 0;
-      left: 0;
+      display: none;
     }
   }
 }

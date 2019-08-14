@@ -6,6 +6,12 @@ const User = require("../models/userModel");
 
 router.get("/users/get", async (req, res) => {
   try {
+    if (req.header("Orders")) {
+      const films = await User.find({}, { fullName: 1, avatar: 1, tickets: 1 });
+
+      return res.status(200).send(films);
+    }
+
     if (req.header("Revisit")) {
       const user = await User.findById(req.header("Revisit"));
 
@@ -17,10 +23,10 @@ router.get("/users/get", async (req, res) => {
       return res.status(200).send(user);
     }
 
-    if (req.header("email")) {
-      const user = await User.findOne({ email: req.header("email") });
+    if (req.header("Email")) {
+      const user = await User.findOne({ email: req.header("Email") });
 
-      if (!user || !bcrypt.compareSync(req.header("password"), user.password)) {
+      if (!user || !bcrypt.compareSync(req.header("Password"), user.password)) {
         res.statusMessage = "Invalid email or password!";
         return res.status(400).end();
       }

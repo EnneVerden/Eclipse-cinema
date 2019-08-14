@@ -22,7 +22,7 @@ const FilmsTable = ({ filmsData, modalFilm, setModalInfo }) => {
 
   return (
     <Fragment>
-      <table className="table">
+      <table className="table films-table">
         <thead>
           <tr>
             <th>name</th>
