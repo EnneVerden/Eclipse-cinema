@@ -126,6 +126,12 @@ router.put("/users/:userId/change", async (req, res) => {
       return res.status(200).send(req.body);
     }
 
+    if (req.body.removeRequest !== undefined) {
+      await User.updateOne({ _id: req.params.userId }, req.body);
+
+      return res.status(200).send(req.body);
+    }
+
     if (req.body.oldPassword || req.body.oldPassword === "") {
       const oldPassword = req.body.oldPassword;
       const myPassword = await User.findById(req.params.userId, {
@@ -146,8 +152,7 @@ router.put("/users/:userId/change", async (req, res) => {
 
       const user = await User.findById(req.params.userId, {
         fullName: 1,
-        password: 1,
-        removeRequest: 1
+        password: 1
       });
 
       return res.status(200).send(user);

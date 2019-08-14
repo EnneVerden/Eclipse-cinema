@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import OrderRow from './orderRow';
+import Preloader from '../../../shared/preloader/Preloader';
 
 const Orders = ({ orders }) => {
-  const content = [];
+  const films = [];
   orders.forEach((item) => {
-    item.tickets.forEach(film => content.push(
+    item.tickets.forEach(film => films.push(
       <OrderRow
         key={item._id + film._id}
         userName={item.fullName}
@@ -17,6 +18,16 @@ const Orders = ({ orders }) => {
       />,
     ));
   });
+
+  const content = orders.length ? (
+    films
+  ) : (
+    <tr>
+      <td colSpan="5">
+        <Preloader />
+      </td>
+    </tr>
+  )
 
   return (
     <section className="table-section tab-pane fade" id="orders">

@@ -39,6 +39,8 @@ class SearchContainer extends PureComponent {
     const { searchTerm } = this.state;
     const { searchFilm } = this.props;
 
+    if (searchTerm === '') return;
+
     searchFilm(searchTerm);
   };
 

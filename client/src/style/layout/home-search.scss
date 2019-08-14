@@ -2,7 +2,7 @@
   width: 48%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   position: relative;
 
   &__input {
@@ -10,8 +10,9 @@
     background: none;
     border: none;
     border-bottom: 2px solid #37373b;
-    padding: 7px 15px;
+    padding: 3px 10px;
     color: #d1d1d1;
+    font-size: 18px;
     letter-spacing: 1px;
     outline: none;
     transition: border-color 0.3s;
@@ -24,9 +25,6 @@
   }
 
   &__btn-search {
-    position: absolute;
-    bottom: 0;
-    right: 0;
     background-color: #37373b;
     color: #7d7c84;
     border-bottom: 2px solid #37373b;
