@@ -19,7 +19,7 @@ const App = ({ isLoading, email }) => (
         redirect
         component={Auth}
       />
-      <ProtectedRoute exact path="/home" protectField={email} component={Home} />
+      <ProtectedRoute path="/home" protectField={email} component={Home} />
       <ProtectedRoute
         exact
         path="/settings"

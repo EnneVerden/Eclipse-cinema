@@ -4,6 +4,24 @@ const Film = require("../models/filmModel");
 
 router.get("/films/get", async (req, res) => {
   try {
+    if (req.query.page) {
+      const page = Number(req.query.page);
+      const numberFilmsPerPage = 12;
+      const totalFilms = await Film.countDocuments();
+      const data = await Film.find({})
+        .limit(numberFilmsPerPage)
+        .skip((page - 1) * numberFilmsPerPage);
+
+      const response = {
+        currentPage: page,
+        numberFilmsPerPage,
+        totalFilms,
+        data
+      };
+
+      return res.status(200).send(response);
+    }
+
     if (req.header("Film-name")) {
       const filmName = req.header("Film-name").toLowerCase();
       const film = await Film.findOne({

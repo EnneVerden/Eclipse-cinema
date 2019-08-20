@@ -3,13 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import FilmsGrid from '../pages/home/components/filmsGrid';
-import { fetchFilmsData } from '../actions/filmsData';
+import { fetchFilmsDataWithPage } from '../actions/filmsWithPage';
 
 class FilmsGridContainer extends PureComponent {
   componentDidMount = () => {
-    const { getFilmsData } = this.props;
+    const { getFilmsData, history } = this.props;
+    const params = history.location.search;
+    const pageNumber = params.split('=')[1] || 1;
 
-    getFilmsData();
+    getFilmsData(pageNumber);
   };
 
   render() {
@@ -20,20 +22,25 @@ class FilmsGridContainer extends PureComponent {
 }
 
 FilmsGridContainer.propTypes = {
+  history: PropTypes.oneOfType([PropTypes.object]).isRequired,
   getFilmsData: PropTypes.func.isRequired,
   filmsData: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
     PropTypes.array,
-  ]).isRequired,
+  ]),
+};
+
+FilmsGridContainer.defaultProps = {
+  filmsData: [],
 };
 
 const mapStateToProps = state => ({
-  filmsData: state.filmsData,
+  filmsData: state.filmsPerPage.data,
 });
 
 const mapDispatchToProps = dispatch => ({
-  getFilmsData: () => dispatch(fetchFilmsData()),
+  getFilmsData: pageNumber => dispatch(fetchFilmsDataWithPage(pageNumber)),
 });
 
 export default connect(
