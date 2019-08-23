@@ -7,7 +7,7 @@ import Profile from '../../containers/profile';
 import Films from './components/films';
 import UsersTable from '../../containers/usersTable';
 import Orders from '../../containers/orders';
-import ErrorAlert from '../../containers/alert';
+import Warning from '../../containers/alert';
 
 import ProtectedComponent from '../../shared/protectComponent/ProtectedComp';
 
@@ -19,7 +19,7 @@ const Settings = ({ status }) => (
     <ProtectedComponent protectField={status} component={Films} />
     <ProtectedComponent protectField={status} component={UsersTable} />
     <ProtectedComponent protectField={status} component={Orders} />
-    <ErrorAlert />
+    <Warning />
   </div>
 );
 

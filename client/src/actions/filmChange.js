@@ -1,5 +1,5 @@
 import { CHANGE_FILM_DATA_SUCCESS } from '../actionTypes';
-import { throwError } from './throwError';
+import { throwWarning } from './throwWarning';
 
 export const changeFilmSuccess = film => ({
   type: CHANGE_FILM_DATA_SUCCESS,
@@ -19,11 +19,11 @@ export const changeFilm = (filmID, body) => async (dispatch) => {
   } catch (error) {
     switch (error.message) {
       case 'Failed to fetch':
-        return dispatch(throwError('No internet connection!'));
+        return dispatch(throwWarning('No internet connection!', 'error'));
       case 'Unexpected token P in JSON at position 0':
-        return dispatch(throwError('Server is not avaible!'));
+        return dispatch(throwWarning('Server is not avaible!', 'error'));
       default:
-        return dispatch(throwError('Unknown error!'));
+        return dispatch(throwWarning('Unknown error!', 'error'));
     }
   }
 };

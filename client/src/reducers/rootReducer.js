@@ -6,7 +6,7 @@ import filmsPerPage from './filmsPerPage';
 import usersData from './usersData';
 import search from './search';
 import orders from './orders';
-import error from './error';
+import warning from './warning';
 
 const rootReducer = combineReducers({
   userData,
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   usersData,
   search,
   orders,
-  error,
+  warning,
 });
 
 export default rootReducer;

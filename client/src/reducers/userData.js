@@ -2,8 +2,9 @@ import {
   FETCH_USER_DATA_SUCCESS,
   CHANGE_USER_DATA_SUCCESS,
   SEND_REMOVE_REQUEST_SUCCESS,
-  DELETE_TICKET_SUCCESS,
+  REPLENISH_BALANCE_SUCCESS,
   BUY_TICKET_SUCCESS,
+  DELETE_TICKET_SUCCESS,
   USER_IS_LOGGED_OUT,
 } from '../actionTypes';
 
@@ -14,6 +15,10 @@ const userData = (state = initialState, action) => {
     case FETCH_USER_DATA_SUCCESS:
       return action.user;
     case CHANGE_USER_DATA_SUCCESS:
+      if (action.newUserData.avatar) {
+        return { ...state, avatar: action.newUserData.avatar };
+      }
+
       return {
         ...state,
         fullName: action.newUserData.fullName,
@@ -21,6 +26,8 @@ const userData = (state = initialState, action) => {
       };
     case SEND_REMOVE_REQUEST_SUCCESS:
       return { ...state, removeRequest: action.newUserData.removeRequest };
+    case REPLENISH_BALANCE_SUCCESS:
+      return { ...state, balance: state.balance + action.balance.balance };
     case BUY_TICKET_SUCCESS:
       return {
         ...state,

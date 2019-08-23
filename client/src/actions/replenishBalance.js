@@ -1,25 +1,25 @@
-import { FETCH_ORDERS_SUCCESS } from '../actionTypes';
+import { REPLENISH_BALANCE_SUCCESS } from '../actionTypes';
 import { throwWarning } from './throwWarning';
 
-export const fetchOrdersSuccess = orders => ({
-  type: FETCH_ORDERS_SUCCESS,
-  orders,
+export const replenishBalanceSuccess = balance => ({
+  type: REPLENISH_BALANCE_SUCCESS,
+  balance,
 });
 
-export const fetchOrders = () => async (dispatch) => {
+export const replenishBalance = (userID, body) => async (dispatch) => {
   try {
-    const response = await fetch('api/users/get', {
-      method: 'GET',
+    const response = await fetch(`api/users/${userID}/change`, {
+      method: 'PUT',
       headers: {
         'Content-type': 'application/json',
         Accept: 'application/json',
-        Orders: true,
       },
+      body: JSON.stringify(body),
     });
 
     const data = await response.json();
 
-    return dispatch(fetchOrdersSuccess(data));
+    return dispatch(replenishBalanceSuccess(data));
   } catch (error) {
     switch (error.message) {
       case 'Failed to fetch':

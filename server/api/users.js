@@ -86,6 +86,30 @@ router.post("/users/addUser", async (req, res) => {
 
 router.put("/users/:userId/change", async (req, res) => {
   try {
+    if (req.body.balance) {
+      const newReplenish = req.body;
+
+      const userBalance = await User.findOne(
+        { _id: req.params.userId },
+        { _id: 0, balance: 1 }
+      );
+
+      await User.updateOne(
+        { _id: req.params.userId },
+        { balance: userBalance.balance + newReplenish.balance }
+      );
+
+      return res.status(200).send(req.body);
+    }
+
+    if (req.body.avatar) {
+      const avatar = req.body;
+
+      await User.updateOne({ _id: req.params.userId }, avatar);
+
+      return res.status(200).send(avatar);
+    }
+
     if (req.body.deletedTicket) {
       const ticket = req.body.deletedTicket;
 

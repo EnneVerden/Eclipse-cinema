@@ -1,23 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ErrorAlert = ({ errorText }) => (
-  <div className="error-alert">
-    <div className="error-alert__info alert alert-danger" role="alert">
-      <div className="error-alert__icon">
-        <i className="fas fa-exclamation-triangle" />
+const Warning = ({ warningText, warningType }) => (
+  <div className="warning-alert">
+    <div
+      className={`warning-alert__info alert ${
+        warningType === 'success' ? 'alert-success' : 'alert-danger'
+      }`}
+      role="alert"
+    >
+      <div
+        className={`warning-alert__icon ${
+          warningType === 'success'
+            ? 'warning-alert__icon_success'
+            : 'warning-alert__icon_error'
+        }`}
+      >
+        {warningType === 'success' ? (
+          <i className="fas fa-check-circle" />
+        ) : (
+          <i className="fas fa-exclamation-triangle" />
+        )}
       </div>
-      <span className="error-alert__text">{errorText}</span>
+      <span className="warning-alert__text">{warningText}</span>
     </div>
   </div>
 );
 
-ErrorAlert.propTypes = {
-  errorText: PropTypes.string,
+Warning.propTypes = {
+  warningText: PropTypes.string,
+  warningType: PropTypes.string,
 };
 
-ErrorAlert.defaultProps = {
-  errorText: '',
+Warning.defaultProps = {
+  warningText: '',
+  warningType: '',
 };
 
-export default ErrorAlert;
+export default Warning;

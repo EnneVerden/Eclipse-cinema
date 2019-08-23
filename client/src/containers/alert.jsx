@@ -2,17 +2,17 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import ErrorAlert from '../shared/alerts/alert';
-import { causeErrorReset } from '../actions/throwError';
+import Warning from '../shared/alerts/alert';
+import { causeWarningReset } from '../actions/throwWarning';
 
-class ErrorAlertContainer extends PureComponent {
+class WarningAlertContainer extends PureComponent {
   timeoutNumber;
 
   componentDidUpdate = () => {
-    const { errorText, causeReset } = this.props;
+    const { warningText, causeReset } = this.props;
 
-    if (errorText !== '') {
-      const alert = document.querySelector('.error-alert');
+    if (warningText !== '') {
+      const alert = document.querySelector('.warning-alert');
 
       alert.style.display = 'flex';
       if (!/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
@@ -34,30 +34,33 @@ class ErrorAlertContainer extends PureComponent {
   };
 
   render() {
-    const { errorText } = this.props;
+    const { warningText, warningType } = this.props;
 
-    return <ErrorAlert errorText={errorText} />;
+    return <Warning warningText={warningText} warningType={warningType} />;
   }
 }
 
-ErrorAlertContainer.propTypes = {
-  errorText: PropTypes.string,
+WarningAlertContainer.propTypes = {
+  warningText: PropTypes.string,
+  warningType: PropTypes.string,
   causeReset: PropTypes.func.isRequired,
 };
 
-ErrorAlertContainer.defaultProps = {
-  errorText: '',
+WarningAlertContainer.defaultProps = {
+  warningText: '',
+  warningType: '',
 };
 
 const mapStateToProps = state => ({
-  errorText: state.error.errorText,
+  warningText: state.warning.warningText,
+  warningType: state.warning.warningType,
 });
 
 const mapDispatchToProps = dispatch => ({
-  causeReset: () => dispatch(causeErrorReset()),
+  causeReset: () => dispatch(causeWarningReset()),
 });
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ErrorAlertContainer);
+)(WarningAlertContainer);

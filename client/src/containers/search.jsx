@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Search from '../pages/home/components/search';
 import { getDesiredFilm } from '../actions/filmSearch';
 import { buyTicket } from '../actions/buyTicket';
-import { throwError, causeErrorReset } from '../actions/throwError';
+import { throwWarning, causeWarningReset } from '../actions/throwWarning';
 
 class SearchContainer extends PureComponent {
   state = {
@@ -54,12 +54,12 @@ class SearchContainer extends PureComponent {
       userID,
       film,
       purchaseTicket,
-      throwNewError,
+      throwNewWarning,
       causeReset,
     } = this.props;
 
     if (userBalance < film.ticketPrice) {
-      return throwNewError('Insufficient funds on balance!');
+      return throwNewWarning('Insufficient funds on balance!', 'error');
     }
 
     purchaseTicket(userID, { buyTicket: film });
@@ -112,7 +112,7 @@ SearchContainer.propTypes = {
   ]).isRequired,
   searchFilm: PropTypes.func.isRequired,
   purchaseTicket: PropTypes.func.isRequired,
-  throwNewError: PropTypes.func.isRequired,
+  throwNewWarning: PropTypes.func.isRequired,
   causeReset: PropTypes.func.isRequired,
 };
 
@@ -126,8 +126,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   searchFilm: filmName => dispatch(getDesiredFilm(filmName)),
   purchaseTicket: (userID, body) => dispatch(buyTicket(userID, body)),
-  throwNewError: errorText => dispatch(throwError(errorText)),
-  causeReset: () => dispatch(causeErrorReset()),
+  throwNewWarning: (warningText, warningType) => dispatch(throwWarning(warningText, warningType)),
+  causeReset: () => dispatch(causeWarningReset()),
 });
 
 export default connect(

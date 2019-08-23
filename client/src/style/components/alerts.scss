@@ -1,4 +1,4 @@
-.error-alert {
+.warning-alert {
   position: fixed;
   bottom: 0;
   left: 50%;
@@ -20,9 +20,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #f5c6cb;
     width: 3rem;
     height: 100%;
+
+    &_error {
+      background-color: #f5c6cb;
+    }
+
+    &_success {
+      background-color: #a9e5b7;
+    }
   }
 
   &__text {
@@ -31,7 +38,7 @@
 }
 
 @media all and (max-width: 768px) {
-  .error-alert {
+  .warning-alert {
     &__info {
       font-size: 20px;
     }
@@ -39,7 +46,7 @@
 }
 
 @media all and (max-width: 420px) {
-  .error-alert {
+  .warning-alert {
     width: 90%;
     left: 5%;
 

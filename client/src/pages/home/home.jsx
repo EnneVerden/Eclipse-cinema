@@ -6,7 +6,7 @@ import Title from './components/title';
 import FilmsGrid from '../../containers/filmsGrid';
 import Pagination from '../../containers/pagination';
 import Footer from './components/footer';
-import ErrorAlert from '../../containers/alert';
+import Warning from '../../containers/alert';
 
 const Home = ({ history }) => (
   <div className="home">
@@ -15,7 +15,7 @@ const Home = ({ history }) => (
     <FilmsGrid history={history} />
     <Pagination />
     <Footer />
-    <ErrorAlert />
+    <Warning />
   </div>
 );
 
