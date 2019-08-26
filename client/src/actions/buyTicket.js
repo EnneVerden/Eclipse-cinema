@@ -17,13 +17,6 @@ export const buyTicket = (userID, body) => async (dispatch) => {
     const ticket = await response.json();
     return dispatch(buyTicketSuccess(ticket.buyTicket));
   } catch (error) {
-    switch (error.message) {
-      case 'Failed to fetch':
-        return dispatch(throwWarning('No internet connection!', 'error'));
-      case 'Unexpected token P in JSON at position 0':
-        return dispatch(throwWarning('Server is not avaible!', 'error'));
-      default:
-        return dispatch(throwWarning('Unknown error!', 'error'));
-    }
+    return dispatch(throwWarning('Oops... Something is wrong! Please try again.', 'error'));
   }
 };

@@ -41,6 +41,10 @@
     &:hover::before {
       transform: scale(1, 1);
     }
+
+    &:nth-child(4):before {
+      width: 0;
+    }
   }
 
   &__home_mobile {

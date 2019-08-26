@@ -80,8 +80,7 @@ class ProfileContainer extends PureComponent {
       await storageRef.put(event.target.files[0]);
 
       const avatarURL = await storageRef.getDownloadURL();
-      changeData(_id, { avatar: avatarURL });
-      return throwNewWarning('Avatar changed successfully!', 'success');
+      return changeData(_id, { avatar: avatarURL });
     } catch (error) {
       return throwNewWarning('Image upload error!', 'error');
     }
@@ -89,7 +88,7 @@ class ProfileContainer extends PureComponent {
 
   changeUserData = () => {
     const { fullName, newPassword, currentPassword } = this.state;
-    const { _id, changeData, throwNewWarning } = this.props;
+    const { _id, changeData } = this.props;
     let newData = {};
 
     if (fullName === '' && newPassword === '') return;
@@ -106,7 +105,6 @@ class ProfileContainer extends PureComponent {
     }
 
     changeData(_id, newData);
-    throwNewWarning('Information changed successfully!', 'success');
   };
 
   removeAccount = () => {

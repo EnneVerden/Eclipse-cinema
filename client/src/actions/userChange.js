@@ -19,15 +19,9 @@ export const changeUserData = (userID, body) => async (dispatch) => {
     }
 
     const newUserData = await response.json();
-    return dispatch(changeUserDataSuccess(newUserData));
+    dispatch(changeUserDataSuccess(newUserData));
+    return dispatch(throwWarning('Information changed successfully!', 'success'));
   } catch (error) {
-    switch (error.message) {
-      case 'Failed to fetch':
-        return dispatch(throwWarning('No internet connection!', 'error'));
-      case 'Unexpected token P in JSON at position 0':
-        return dispatch(throwWarning('Server is not avaible!', 'error'));
-      default:
-        return dispatch(throwWarning('Unknown error!', 'error'));
-    }
+    return dispatch(throwWarning('Oops... Something is wrong! Please try again.', 'error'));
   }
 };
