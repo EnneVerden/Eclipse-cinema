@@ -2,6 +2,9 @@
 
 Eclipse-cinema - an application for ordering movie tickets.
 
+
+The demo service is available at: [eclipse-cinema.verden.now.sh](https://eclipse-cinema.verden.now.sh)
+
 ---
 
 ### How to start
